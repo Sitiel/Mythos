@@ -117,6 +117,9 @@ public class ThirdPersonPlayerController : MonoBehaviour
 
         Vector3 forward = transform.TransformDirection(Vector3.forward) * direction * Time.deltaTime;
 
+        calculateCurrentState();
+        calculateVSpeed();
+
         forward.y = -vSpeed;
         characterController.Move(forward);
     }
