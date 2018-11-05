@@ -4,32 +4,25 @@ using UnityEngine;
 
 public class WorldCreator : MonoBehaviour {
 
-    [SerializeField]
-    private List<NestedListWrapper> tileWorld;
-    [SerializeField]
+    private List<List<Tile>> tileWorld;
     GameObject tileCreator;
-    [SerializeField]
-    bool useWorldGenerator = true;
 
 
 	// Use this for initialization
 	void Start () {
-        if(!useWorldGenerator){
-            loadWorld(tileWorld);
-        }
+
 	}
 
-    public void loadWorld(List<NestedListWrapper> tileWorld){
+    public void loadWorld(List<List<Tile>> tileWorld){
         int x = 0;
         int y = 0;
 
-        foreach (NestedListWrapper line in tileWorld)
+        foreach (List<Tile> line in tileWorld)
         {
-            foreach (int tile in line.list)
+            foreach (Tile tile in line)
             {
-                GameObject prefabTile = Instantiate(tileCreator) as GameObject;
-                prefabTile.transform.position = new Vector3(x, 1, y);
-                prefabTile.GetComponent<Tile>().type = tile;
+                tile.transform.position = new Vector3(x*10, tile.y, y*10);
+                //prefabTile.GetComponent<Tile>().type = tile;
                 y++;
             }
             x++;

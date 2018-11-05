@@ -38,7 +38,7 @@ RenderSettings:
   m_ReflectionIntensity: 1
   m_CustomReflection: {fileID: 0}
   m_Sun: {fileID: 0}
-  m_IndirectSpecularColor: {r: 0.44657898, g: 0.49641275, b: 0.57481736, a: 1}
+  m_IndirectSpecularColor: {r: 0.45078987, g: 0.5007208, b: 0.57474434, a: 1}
   m_UseRadianceAmbientProbe: 0
 --- !u!157 &3
 LightmapSettings:
@@ -140,9 +140,24 @@ MonoBehaviour:
   m_Script: {fileID: 11500000, guid: b46538b281a294ff7b8b30b62b8458bd, type: 3}
   m_Name: 
   m_EditorClassIdentifier: 
-  widthOfTheWorld: 100
-  lengthOfTheWorld: 100
+  widthOfTheWorld: 50
+  lengthOfTheWorld: 50
   creator: {fileID: 1790633080}
+  grass: {fileID: 114365011310846344, guid: 048082f907032450cb13f84ac410eab0, type: 2}
+  sand: {fileID: 114962488820911716, guid: f7d65b09530de4cc991d87ead4aa208c, type: 2}
+  rock: {fileID: 114777021389017748, guid: e95708d2eb2f0406ca77b833d1c5772e, type: 2}
+  trees:
+  - {fileID: 1000011694247070, guid: b7ebff1b87d7ca945b423ef079c87d3f, type: 2}
+  - {fileID: 1000011694247070, guid: da4f7b4359ecb4446a55ca12785c99c7, type: 2}
+  - {fileID: 1000011694247070, guid: 7b2a2ed64e7f8124084634fe0dbff6b3, type: 2}
+  - {fileID: 1000011694247070, guid: 845b915d7cc75234193c4dff840df908, type: 2}
+  bushes:
+  - {fileID: 1000010364190954, guid: 77cf23ae4a802814d80a8786c4c183a7, type: 2}
+  - {fileID: 1000010639227702, guid: a721d85d0458a524e99c7e3cce944fc0, type: 2}
+  rocks:
+  - {fileID: 100000, guid: 9a0822c581ee4b64fbbb1dc61e5cdea3, type: 3}
+  - {fileID: 100000, guid: a8c56a9a492ba85448c53584920911e1, type: 3}
+  stones: []
 --- !u!4 &58978136
 Transform:
   m_ObjectHideFlags: 0
@@ -215,13 +230,100 @@ Transform:
   m_CorrespondingSourceObject: {fileID: 0}
   m_PrefabInternal: {fileID: 0}
   m_GameObject: {fileID: 170076733}
-  m_LocalRotation: {x: 0.40821788, y: -0.23456968, z: 0.10938163, w: 0.8754261}
+  m_LocalRotation: {x: 0.90344363, y: -0.24430521, z: -0.0854537, w: 0.34176347}
   m_LocalPosition: {x: -15.99, y: 3, z: 0}
   m_LocalScale: {x: 1, y: 1, z: 1}
   m_Children: []
   m_Father: {fileID: 0}
   m_RootOrder: 0
-  m_LocalEulerAnglesHint: {x: 50, y: -30, z: 0}
+  m_LocalEulerAnglesHint: {x: 35.154003, y: -156.85301, z: -142.313}
+--- !u!1 &389788190
+GameObject:
+  m_ObjectHideFlags: 0
+  m_CorrespondingSourceObject: {fileID: 0}
+  m_PrefabInternal: {fileID: 0}
+  serializedVersion: 6
+  m_Component:
+  - component: {fileID: 389788194}
+  - component: {fileID: 389788193}
+  - component: {fileID: 389788192}
+  - component: {fileID: 389788191}
+  m_Layer: 0
+  m_Name: Water
+  m_TagString: Untagged
+  m_Icon: {fileID: 0}
+  m_NavMeshLayer: 0
+  m_StaticEditorFlags: 0
+  m_IsActive: 1
+--- !u!64 &389788191
+MeshCollider:
+  m_ObjectHideFlags: 0
+  m_CorrespondingSourceObject: {fileID: 0}
+  m_PrefabInternal: {fileID: 0}
+  m_GameObject: {fileID: 389788190}
+  m_Material: {fileID: 0}
+  m_IsTrigger: 0
+  m_Enabled: 1
+  serializedVersion: 3
+  m_Convex: 0
+  m_CookingOptions: 14
+  m_SkinWidth: 0.01
+  m_Mesh: {fileID: 10209, guid: 0000000000000000e000000000000000, type: 0}
+--- !u!23 &389788192
+MeshRenderer:
+  m_ObjectHideFlags: 0
+  m_CorrespondingSourceObject: {fileID: 0}
+  m_PrefabInternal: {fileID: 0}
+  m_GameObject: {fileID: 389788190}
+  m_Enabled: 1
+  m_CastShadows: 1
+  m_ReceiveShadows: 1
+  m_DynamicOccludee: 1
+  m_MotionVectors: 1
+  m_LightProbeUsage: 1
+  m_ReflectionProbeUsage: 1
+  m_RenderingLayerMask: 4294967295
+  m_Materials:
+  - {fileID: 2100000, guid: 52b7d70b1de7c4ce09662b77c14d9fda, type: 2}
+  m_StaticBatchInfo:
+    firstSubMesh: 0
+    subMeshCount: 0
+  m_StaticBatchRoot: {fileID: 0}
+  m_ProbeAnchor: {fileID: 0}
+  m_LightProbeVolumeOverride: {fileID: 0}
+  m_ScaleInLightmap: 1
+  m_PreserveUVs: 0
+  m_IgnoreNormalsForChartDetection: 0
+  m_ImportantGI: 0
+  m_StitchLightmapSeams: 0
+  m_SelectedEditorRenderState: 3
+  m_MinimumChartSize: 4
+  m_AutoUVMaxDistance: 0.5
+  m_AutoUVMaxAngle: 89
+  m_LightmapParameters: {fileID: 0}
+  m_SortingLayerID: 0
+  m_SortingLayer: 0
+  m_SortingOrder: 0
+--- !u!33 &389788193
+MeshFilter:
+  m_ObjectHideFlags: 0
+  m_CorrespondingSourceObject: {fileID: 0}
+  m_PrefabInternal: {fileID: 0}
+  m_GameObject: {fileID: 389788190}
+  m_Mesh: {fileID: 10209, guid: 0000000000000000e000000000000000, type: 0}
+--- !u!4 &389788194
+Transform:
+  m_ObjectHideFlags: 0
+  m_CorrespondingSourceObject: {fileID: 0}
+  m_PrefabInternal: {fileID: 0}
+  m_GameObject: {fileID: 389788190}
+  m_LocalRotation: {x: 0, y: 0, z: 0, w: 1}
+  m_LocalPosition: {x: 0, y: -1, z: 0}
+  m_LocalScale: {x: 100, y: 1, z: 100}
+  m_Children: []
+  m_Father: {fileID: 0}
+  m_RootOrder: 3
+  m_LocalEulerAnglesHint: {x: 0, y: 0, z: 0}
 --- !u!1 &809536694
 GameObject:
   m_ObjectHideFlags: 0
@@ -244,7 +346,7 @@ Transform:
   m_PrefabInternal: {fileID: 0}
   m_GameObject: {fileID: 809536694}
   m_LocalRotation: {x: 0, y: 0, z: 0, w: 1}
-  m_LocalPosition: {x: 7.89, y: -0.25, z: 20.39}
+  m_LocalPosition: {x: 7.89, y: 125, z: 20.39}
   m_LocalScale: {x: 1, y: 1, z: 1}
   m_Children:
   - {fileID: 1917778695}
@@ -336,7 +438,7 @@ Camera:
   m_CullingMask:
     serializedVersion: 2
     m_Bits: 4294967295
-  m_RenderingPath: -1
+  m_RenderingPath: 1
   m_TargetTexture: {fileID: 0}
   m_TargetDisplay: 0
   m_TargetEye: 3
@@ -377,7 +479,7 @@ MonoBehaviour:
   maxYAngle: 80
   CamOcclusion:
     serializedVersion: 2
-    m_Bits: 4294967295
+    m_Bits: 311
 --- !u!1 &1790633079
 GameObject:
   m_ObjectHideFlags: 0
@@ -405,13 +507,6 @@ MonoBehaviour:
   m_Script: {fileID: 11500000, guid: 0e5b252f2ef154382afa352112580f64, type: 3}
   m_Name: 
   m_EditorClassIdentifier: 
-  tileWorld:
-  - list: 000000000100000000000000
-  - list: 000000000100000000000000
-  - list: 000000000100000000000000
-  tileCreator: {fileID: 1618766266455624, guid: afd124eff216144b88760d9e96ec9a42,
-    type: 2}
-  useWorldGenerator: 1
 --- !u!4 &1790633081
 Transform:
   m_ObjectHideFlags: 0
@@ -438,7 +533,7 @@ GameObject:
   - component: {fileID: 1917778692}
   - component: {fileID: 1917778697}
   - component: {fileID: 1917778696}
-  m_Layer: 0
+  m_Layer: 9
   m_Name: Player
   m_TagString: Untagged
   m_Icon: {fileID: 0}
@@ -542,4 +637,4 @@ MonoBehaviour:
   m_Name: 
   m_EditorClassIdentifier: 
   cameraController: {fileID: 1447403035}
-  speed: 5
+  speed: 15
