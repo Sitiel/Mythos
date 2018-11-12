@@ -1,9 +1,10 @@
 ﻿using System.Collections;
 using System.Collections.Generic;
 using UnityEngine;
+using UnityEngine.AI;
 
 public class WorldCreator : MonoBehaviour {
-
+    public NavMeshSurface surface;
     private List<List<Tile>> tileWorld;
     GameObject tileCreator;
 
@@ -28,6 +29,9 @@ public class WorldCreator : MonoBehaviour {
             x++;
             y = 0;
         }
+        surface.BuildNavMesh();
+
+
     }
 	
 	// Update is called once per frame
