@@ -407,8 +407,8 @@ MonoBehaviour:
   - {fileID: 1000010364190954, guid: 77cf23ae4a802814d80a8786c4c183a7, type: 2}
   - {fileID: 1000010639227702, guid: a721d85d0458a524e99c7e3cce944fc0, type: 2}
   rocks:
-  - {fileID: 100000, guid: 9a0822c581ee4b64fbbb1dc61e5cdea3, type: 3}
-  - {fileID: 100000, guid: a8c56a9a492ba85448c53584920911e1, type: 3}
+  - {fileID: 1340027393841014, guid: 427eba37ba1e42f47a0ee3a057d84a46, type: 2}
+  - {fileID: 1563280128262430, guid: 22a54350551105249bcd4a1e6dec1e56, type: 2}
   stones: []
 --- !u!1 &587310332
 GameObject:
@@ -421,7 +421,7 @@ GameObject:
   - component: {fileID: 587310336}
   - component: {fileID: 587310335}
   - component: {fileID: 587310333}
-  m_Layer: 0
+  m_Layer: 9
   m_Name: PlayerCamera
   m_TagString: MainCamera
   m_Icon: {fileID: 0}
@@ -625,10 +625,14 @@ Prefab:
         type: 2}
       propertyPath: player
       value: 
-      objectReference: {fileID: 0}
+      objectReference: {fileID: 1823583527}
     - target: {fileID: 1551806210959754, guid: 39de13eba12ed4844a1bce1fea08d165, type: 2}
       propertyPath: m_Name
       value: Allie (6)
+      objectReference: {fileID: 0}
+    - target: {fileID: 1551806210959754, guid: 39de13eba12ed4844a1bce1fea08d165, type: 2}
+      propertyPath: m_Layer
+      value: 10
       objectReference: {fileID: 0}
     m_RemovedComponents: []
   m_SourcePrefab: {fileID: 100100000, guid: 39de13eba12ed4844a1bce1fea08d165, type: 2}
@@ -952,7 +956,7 @@ GameObject:
   serializedVersion: 6
   m_Component:
   - component: {fileID: 946517763}
-  m_Layer: 0
+  m_Layer: 9
   m_Name: ThirdPersonPlayer (1)
   m_TagString: Untagged
   m_Icon: {fileID: 0}
@@ -1080,10 +1084,14 @@ Prefab:
         type: 2}
       propertyPath: player
       value: 
-      objectReference: {fileID: 0}
+      objectReference: {fileID: 1823583527}
     - target: {fileID: 1551806210959754, guid: 39de13eba12ed4844a1bce1fea08d165, type: 2}
       propertyPath: m_Name
       value: Allie (7)
+      objectReference: {fileID: 0}
+    - target: {fileID: 1551806210959754, guid: 39de13eba12ed4844a1bce1fea08d165, type: 2}
+      propertyPath: m_Layer
+      value: 10
       objectReference: {fileID: 0}
     m_RemovedComponents: []
   m_SourcePrefab: {fileID: 100100000, guid: 39de13eba12ed4844a1bce1fea08d165, type: 2}
@@ -1255,10 +1263,14 @@ Prefab:
         type: 2}
       propertyPath: player
       value: 
-      objectReference: {fileID: 0}
+      objectReference: {fileID: 1823583527}
     - target: {fileID: 1551806210959754, guid: 39de13eba12ed4844a1bce1fea08d165, type: 2}
       propertyPath: m_Name
       value: Allie (5)
+      objectReference: {fileID: 0}
+    - target: {fileID: 1551806210959754, guid: 39de13eba12ed4844a1bce1fea08d165, type: 2}
+      propertyPath: m_Layer
+      value: 10
       objectReference: {fileID: 0}
     m_RemovedComponents: []
   m_SourcePrefab: {fileID: 100100000, guid: 39de13eba12ed4844a1bce1fea08d165, type: 2}
@@ -1272,7 +1284,7 @@ GameObject:
   m_Component:
   - component: {fileID: 1122820773}
   - component: {fileID: 1122820774}
-  m_Layer: 0
+  m_Layer: 9
   m_Name: PlayerSelection
   m_TagString: Untagged
   m_Icon: {fileID: 0}
@@ -1307,7 +1319,7 @@ MonoBehaviour:
   area: {fileID: 1463219546303220, guid: 3beb24facef13433686f9c9c00ec3a1b, type: 2}
   CamOcclusion:
     serializedVersion: 2
-    m_Bits: 290
+    m_Bits: 311
 --- !u!1 &1199101500
 GameObject:
   m_ObjectHideFlags: 0
@@ -1567,10 +1579,14 @@ Prefab:
         type: 2}
       propertyPath: player
       value: 
-      objectReference: {fileID: 0}
+      objectReference: {fileID: 1823583527}
     - target: {fileID: 1551806210959754, guid: 39de13eba12ed4844a1bce1fea08d165, type: 2}
       propertyPath: m_Name
       value: Allie (4)
+      objectReference: {fileID: 0}
+    - target: {fileID: 1551806210959754, guid: 39de13eba12ed4844a1bce1fea08d165, type: 2}
+      propertyPath: m_Layer
+      value: 10
       objectReference: {fileID: 0}
     m_RemovedComponents: []
   m_SourcePrefab: {fileID: 100100000, guid: 39de13eba12ed4844a1bce1fea08d165, type: 2}
@@ -1891,6 +1907,11 @@ CanvasRenderer:
   m_PrefabInternal: {fileID: 0}
   m_GameObject: {fileID: 1710378078}
   m_CullTransparentMesh: 0
+--- !u!1 &1823583527 stripped
+GameObject:
+  m_CorrespondingSourceObject: {fileID: 100004, guid: b1cc94d26cd016d479aa5b522d88da0a,
+    type: 2}
+  m_PrefabInternal: {fileID: 2030762814}
 --- !u!1 &1887352947
 GameObject:
   m_ObjectHideFlags: 0
