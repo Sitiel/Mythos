@@ -9,18 +9,22 @@ public class SimpleFollowerAI : MonoBehaviour {
     bool isFollowing = false;
     [SerializeField]
     GameObject player;
+    private Animator animator;
 
 	// Use this for initialization
 	void Start () {
-		
-	}
+        animator = GetComponent(typeof(Animator)) as Animator;
+        
+    }
 
 
     public void follow(){
+        animator.SetBool("Moving", true);
         isFollowing = true;
     }
 
     public void unFollow(){
+        animator.SetBool("Moving", false);
         isFollowing = false;
     }
 	

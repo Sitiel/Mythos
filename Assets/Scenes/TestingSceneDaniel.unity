@@ -339,6 +339,7 @@ MonoBehaviour:
   m_Script: {fileID: 11500000, guid: 0e5b252f2ef154382afa352112580f64, type: 3}
   m_Name: 
   m_EditorClassIdentifier: 
+  surface: {fileID: 0}
 --- !u!4 &484935836
 Transform:
   m_ObjectHideFlags: 0
@@ -1590,6 +1591,52 @@ Prefab:
       objectReference: {fileID: 0}
     m_RemovedComponents: []
   m_SourcePrefab: {fileID: 100100000, guid: 39de13eba12ed4844a1bce1fea08d165, type: 2}
+  m_IsPrefabAsset: 0
+--- !u!1001 &1615486269
+Prefab:
+  m_ObjectHideFlags: 0
+  serializedVersion: 2
+  m_Modification:
+    m_TransformParent: {fileID: 0}
+    m_Modifications:
+    - target: {fileID: 400208, guid: e53c0edb812c5344698949e4671d1a2c, type: 3}
+      propertyPath: m_LocalPosition.x
+      value: 0
+      objectReference: {fileID: 0}
+    - target: {fileID: 400208, guid: e53c0edb812c5344698949e4671d1a2c, type: 3}
+      propertyPath: m_LocalPosition.y
+      value: 0
+      objectReference: {fileID: 0}
+    - target: {fileID: 400208, guid: e53c0edb812c5344698949e4671d1a2c, type: 3}
+      propertyPath: m_LocalPosition.z
+      value: 0
+      objectReference: {fileID: 0}
+    - target: {fileID: 400208, guid: e53c0edb812c5344698949e4671d1a2c, type: 3}
+      propertyPath: m_LocalRotation.x
+      value: 0
+      objectReference: {fileID: 0}
+    - target: {fileID: 400208, guid: e53c0edb812c5344698949e4671d1a2c, type: 3}
+      propertyPath: m_LocalRotation.y
+      value: 0
+      objectReference: {fileID: 0}
+    - target: {fileID: 400208, guid: e53c0edb812c5344698949e4671d1a2c, type: 3}
+      propertyPath: m_LocalRotation.z
+      value: 0
+      objectReference: {fileID: 0}
+    - target: {fileID: 400208, guid: e53c0edb812c5344698949e4671d1a2c, type: 3}
+      propertyPath: m_LocalRotation.w
+      value: 1
+      objectReference: {fileID: 0}
+    - target: {fileID: 400208, guid: e53c0edb812c5344698949e4671d1a2c, type: 3}
+      propertyPath: m_RootOrder
+      value: 10
+      objectReference: {fileID: 0}
+    - target: {fileID: 100208, guid: e53c0edb812c5344698949e4671d1a2c, type: 3}
+      propertyPath: m_TagString
+      value: Allie
+      objectReference: {fileID: 0}
+    m_RemovedComponents: []
+  m_SourcePrefab: {fileID: 100100000, guid: e53c0edb812c5344698949e4671d1a2c, type: 3}
   m_IsPrefabAsset: 0
 --- !u!1 &1622287757
 GameObject:
