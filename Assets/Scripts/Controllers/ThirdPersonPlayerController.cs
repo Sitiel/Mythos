@@ -102,12 +102,28 @@ public class ThirdPersonPlayerController : MonoBehaviour
 
         if (Input.GetKey("q"))
         {
-            transform.rotation = Quaternion.Euler(new Vector3(0f, cameraController.transform.rotation.eulerAngles.y + reverseAngle - (45 * reversed), 0f));
+            if(direction == 0){
+                transform.rotation = Quaternion.Euler(new Vector3(0f, cameraController.transform.rotation.eulerAngles.y + 90, 0f));
+                direction = -speed;
+            }
+            else{
+                transform.rotation = Quaternion.Euler(new Vector3(0f, cameraController.transform.rotation.eulerAngles.y + reverseAngle - (45 * reversed), 0f));
+            }
+
         }
 
         if (Input.GetKey("d"))
         {
-            transform.rotation = Quaternion.Euler(new Vector3(0f, cameraController.transform.rotation.eulerAngles.y + reverseAngle + (45 * reversed), 0f));
+            if (direction == 0)
+            {
+                transform.rotation = Quaternion.Euler(new Vector3(0f, cameraController.transform.rotation.eulerAngles.y + 90, 0f));
+                direction = speed;
+            }
+            else
+            {
+                transform.rotation = Quaternion.Euler(new Vector3(0f, cameraController.transform.rotation.eulerAngles.y + reverseAngle + (45 * reversed), 0f));
+            }
+
         }
 
         if (Input.GetKey("space"))

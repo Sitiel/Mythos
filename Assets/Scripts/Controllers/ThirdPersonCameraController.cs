@@ -20,18 +20,21 @@ public class ThirdPersonCameraController : MonoBehaviour {
 
     private float currentX = 0, currentY = 0;
     private float sensivityX = 4.0f, sensivityY = 4.0f;
+    public bool movingCamera = true;
 
 
     // Use this for initialization
     void Start () {
-        Cursor.visible = false;
     }
     
     // Update is called once per frame
     void Update () {
-        currentX += Input.GetAxis("Mouse X")*sensivityX;
-        currentY = Mathf.Clamp(currentY - Input.GetAxis("Mouse Y") * sensivityY, minYAngle, maxYAngle);
-        distance = Mathf.Clamp(distance - Input.GetAxis("Mouse ScrollWheel"), 5, 25);
+        if (movingCamera)
+        {
+            currentX += Input.GetAxis("Mouse X") * sensivityX;
+            currentY = Mathf.Clamp(currentY - Input.GetAxis("Mouse Y") * sensivityY, minYAngle, maxYAngle);
+            distance = Mathf.Clamp(distance - Input.GetAxis("Mouse ScrollWheel"), 5, 25);
+        }
     }
 
 

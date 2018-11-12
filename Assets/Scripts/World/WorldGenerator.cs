@@ -119,6 +119,7 @@ public class WorldGenerator : MonoBehaviour {
                 t.transform.position = new Vector3(rX, 0, rY);
                 float size = Random.Range(0.5f, 1.5f);
                 t.transform.localScale = new Vector3(size, size, size);
+                t.transform.rotation = new Quaternion(Random.Range(0, 5), Random.Range(0, 360), Random.Range(0, 5), 0);
             }
 
             int nbBush = Random.Range(200, 500);
@@ -144,11 +145,12 @@ public class WorldGenerator : MonoBehaviour {
                 Vector2 rockPos = new Vector2(Random.Range(-80f, 80f), Random.Range(-80f, 80f));
                 GameObject t = Instantiate(rocks[Random.Range(0, rocks.Count)]) as GameObject;
                 Vector2 rRockPos = rockPos + (mountainsPositions[k] * 10);
-                rRockPos = new Vector2(Mathf.Clamp(rRockPos.x, 0, widthOfTheWorld * 10), Mathf.Clamp(rRockPos.y, 0, lengthOfTheWorld * 10));
+                rRockPos = new Vector2(Mathf.Clamp(rRockPos.x, 0, widthOfTheWorld * 10-1), Mathf.Clamp(rRockPos.y, 0, lengthOfTheWorld * 10-1));
                 Debug.Log(rRockPos);
                 t.transform.position = new Vector3(rRockPos.x, getYOn2DPos(world, rRockPos), rRockPos.y);
-                float size = Random.Range(3f, 10f);
+                float size = Random.Range(2f, 5f);
                 t.transform.localScale = new Vector3(size, size, size);
+                t.transform.rotation = new Quaternion(0, Random.Range(0, 360), 0, 0);
 
             }
         }
