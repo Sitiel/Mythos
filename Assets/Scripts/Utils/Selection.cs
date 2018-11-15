@@ -29,7 +29,6 @@ public class Selection : MonoBehaviour {
             RaycastHit hit;
             if (Physics.Raycast(ray, out hit, 10000, CamOcclusion))
             {
-                Debug.Log("Good");
                 foreach(SimpleFollowerAI follower in alliesFollowing){
                     follower.unFollow();
                 }

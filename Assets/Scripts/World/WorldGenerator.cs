@@ -2,7 +2,8 @@
 using System.Collections.Generic;
 using UnityEngine;
 
-public class WorldGenerator : MonoBehaviour {
+public class WorldGenerator : MonoBehaviour
+{
 
     [SerializeField]
     int widthOfTheWorld = 100;
@@ -32,41 +33,52 @@ public class WorldGenerator : MonoBehaviour {
     [SerializeField]
     private List<GameObject> stones;
 
+    [SerializeField]
+    private List<GameObject> grasses;
+
     private int strengthOfMountain = 5;
     private int areaOfMountain = 10;
     //private float 
 
 
-    int tileDistance(Vector2 p1, Vector2 p2){
+    int tileDistance(Vector2 p1, Vector2 p2)
+    {
         return (int)(Mathf.Abs((p1.x - p2.x)) + Mathf.Abs((p1.y - p2.y)));
     }
 
-    int getYOn2DPos(List<List<Tile>> world, Vector2 p){
+    int getYOn2DPos(List<List<Tile>> world, Vector2 p)
+    {
         return world[(int)(p.x / 10)][(int)(p.y / 10)].y;
     }
 
-	// Use this for initialization
-	void Start () {
+    // Use this for initialization
+    void Start()
+    {
 
         List<Vector2> mountainsPositions = new List<Vector2>();
         List<Vector2> forestsPositions = new List<Vector2>();
 
 
         int nbMountains = Random.Range(2, 5);
-        for (int i = 0; i < nbMountains; i++){
+        for (int i = 0; i < nbMountains; i++)
+        {
             mountainsPositions.Add(new Vector2(Random.Range(0, widthOfTheWorld), Random.Range(0, lengthOfTheWorld)));
         }
 
 
         List<List<Tile>> world = new List<List<Tile>>();
-        for (int i = 0; i < widthOfTheWorld; i++){
+        for (int i = 0; i < widthOfTheWorld; i++)
+        {
             List<Tile> line = new List<Tile>();
-            for (int j = 0; j < lengthOfTheWorld; j++){
+            for (int j = 0; j < lengthOfTheWorld; j++)
+            {
                 int tileY = 0;
-                for (int m = 0; m < mountainsPositions.Count; m++){
+                for (int m = 0; m < mountainsPositions.Count; m++)
+                {
                     int dist = tileDistance(mountainsPositions[m], new Vector2(i, j));
                     int value = areaOfMountain - dist;
-                    if(dist < areaOfMountain && value > tileY){
+                    if (dist < areaOfMountain && value > tileY)
+                    {
                         tileY = (value + Random.Range(-1, 2)) * strengthOfMountain;
                     }
                 }
@@ -77,11 +89,13 @@ public class WorldGenerator : MonoBehaviour {
                 }
                 else
                 {
-                    if(i < 2 || i >= widthOfTheWorld - 2 || j < 2 || j >= lengthOfTheWorld - 2){
+                    if (i < 2 || i >= widthOfTheWorld - 2 || j < 2 || j >= lengthOfTheWorld - 2)
+                    {
                         tmp = Instantiate(sand) as Tile;
                     }
-                    else{
-                        tmp = Instantiate(grass) as Tile; 
+                    else
+                    {
+                        tmp = Instantiate(grass) as Tile;
                     }
 
                 }
@@ -97,10 +111,13 @@ public class WorldGenerator : MonoBehaviour {
         {
             Vector2 v = new Vector2(Random.Range(0, widthOfTheWorld), Random.Range(0, lengthOfTheWorld));
             bool redo = true;
-            while(redo){
+            while (redo)
+            {
                 redo = false;
-                for (int k = 0; k < nbMountains; k++){
-                    if (tileDistance(v, mountainsPositions[k]) <= areaOfMountain + 8){
+                for (int k = 0; k < nbMountains; k++)
+                {
+                    if (tileDistance(v, mountainsPositions[k]) <= areaOfMountain + 8)
+                    {
                         v = new Vector2(Random.Range(0, widthOfTheWorld), Random.Range(0, lengthOfTheWorld));
                         redo = true;
                         break;
@@ -119,7 +136,8 @@ public class WorldGenerator : MonoBehaviour {
                 t.transform.position = new Vector3(rX, 0, rY);
                 float size = Random.Range(0.5f, 1.5f);
                 t.transform.localScale = new Vector3(size, size, size);
-                t.transform.rotation = new Quaternion(Random.Range(0, 5), Random.Range(0, 360), Random.Range(0, 5), 0);
+
+                t.transform.rotation = Quaternion.Euler(Random.Range(0, 5), Random.Range(0, 360), Random.Range(0, 5));
             }
 
             int nbBush = Random.Range(200, 500);
@@ -145,7 +163,7 @@ public class WorldGenerator : MonoBehaviour {
                 Vector2 rockPos = new Vector2(Random.Range(-80f, 80f), Random.Range(-80f, 80f));
                 GameObject t = Instantiate(rocks[Random.Range(0, rocks.Count)]) as GameObject;
                 Vector2 rRockPos = rockPos + (mountainsPositions[k] * 10);
-                rRockPos = new Vector2(Mathf.Clamp(rRockPos.x, 0, widthOfTheWorld * 10-1), Mathf.Clamp(rRockPos.y, 0, lengthOfTheWorld * 10-1));
+                rRockPos = new Vector2(Mathf.Clamp(rRockPos.x, 0, widthOfTheWorld * 10 - 1), Mathf.Clamp(rRockPos.y, 0, lengthOfTheWorld * 10 - 1));
                 t.transform.position = new Vector3(rRockPos.x, getYOn2DPos(world, rRockPos), rRockPos.y);
                 float size = Random.Range(2f, 5f);
                 t.transform.localScale = new Vector3(size, size, size);
@@ -155,11 +173,36 @@ public class WorldGenerator : MonoBehaviour {
         }
 
 
+        for (int i = 0; i < widthOfTheWorld; i++)
+        {
+            for (int j = 0; j < lengthOfTheWorld; j++)
+            {
+                for (int x = 0; x < 10; x++)
+                {
+                    for (int y = 0; y < 10; y++)
+                    {
+
+                        GameObject g = Instantiate(grasses[Random.Range(0, grasses.Count)]) as GameObject;
+                        g.transform.position = new Vector3(i * 10 + x + Random.Range(-0.5f, 0.5f), 1, j * 10 + y + Random.Range(-0.5f, 0.5f));
+                        g.transform.rotation = Quaternion.Euler(0, 0, 0);
+
+                      
+
+
+                    }
+                }
+            }
+        }
+
+
+
+
         creator.loadWorld(world);
-	}
-	
-	// Update is called once per frame
-	void Update () {
-		
-	}
+    }
+
+    // Update is called once per frame
+    void Update()
+    {
+
+    }
 }
