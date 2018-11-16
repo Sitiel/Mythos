@@ -22,7 +22,14 @@ public class WorldCreator : MonoBehaviour {
         {
             foreach (Tile tile in line)
             {
-                tile.transform.position = new Vector3(x*10, tile.y, y*10);
+                /*if((y == tileWorld.Count-1 || y == 0 ||
+                   x == line.Count-1 || x == 0) && Random.Range(0,2) == 1){
+                    
+                }
+                else{*/
+                    tile.transform.position = new Vector3(x * 10, tile.y, y * 10);
+                //}
+
                 //prefabTile.GetComponent<Tile>().type = tile;
                 y++;
             }
