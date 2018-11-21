@@ -3,7 +3,7 @@ using System.Collections.Generic;
 using UnityEngine;
 using UnityEngine.AI;
 
-public class SimpleFollowerAI : AIUnit {
+public class SimpleFollowerAI : Unit {
 
     float moveSpeed = 7; 
     float rotationSpeed = 10;
@@ -12,27 +12,31 @@ public class SimpleFollowerAI : AIUnit {
     GameObject player;
     private Rigidbody rb;
 
+    bool canAttack = true;
+
     private NavMeshAgent agent;
+    private UnitTargetFinder finder;
 
 	// Use this for initialization
-	void Start () {
+    public override void Start () {
+        base.Start();
         animator = GetComponent(typeof(Animator)) as Animator;
         rb = GetComponent<Rigidbody>();
         agent = GetComponent(typeof(NavMeshAgent)) as NavMeshAgent;
+        finder = GetComponentInChildren(typeof(UnitTargetFinder)) as UnitTargetFinder;
+
         
     }
 
 
     public void follow(){
         animator.SetBool("Moving", true);
-        Debug.Log("Moving");
         isFollowing = true;
         agent.isStopped = false;
     }
 
     public void unFollow(){
         animator.SetBool("Moving", false);
-        Debug.Log("Not Moving");
         isFollowing = false;
         agent.isStopped = true;
     }
@@ -42,26 +46,46 @@ public class SimpleFollowerAI : AIUnit {
     {
         if (isDead)
         {
+            agent.isStopped = true;
         }
         else
         {
-            if (isFollowing)
-            {
-                agent.destination = player.transform.position;
-
-                //Get local velocity of charcter
-                float velocityXel = transform.InverseTransformDirection(agent.velocity).x;
-                float velocityZel = transform.InverseTransformDirection(agent.velocity).z;
-
-                //Update animator with movement values
-                animator.SetFloat("Velocity X", velocityXel);
-                animator.SetFloat("Velocity Z", velocityZel);
-
-                /*Quaternion onlyY = Quaternion.Euler(0, 1, 0);
-                transform.rotation =  Quaternion.Slerp(transform.rotation, Quaternion.LookRotation(player.transform.position - transform.position)*onlyY, rotationSpeed * Time.deltaTime);
-                transform.localEulerAngles = new Vector3(0, transform.localEulerAngles.y, 0);
-                transform.position += transform.forward * moveSpeed * Time.deltaTime;*/
+            List<Unit> nearbyEnnemies = finder.getUnitsInArea();
+            if(nearbyEnnemies.Count != 0){
+                agent.destination = nearbyEnnemies[0].transform.position;
+                if(Vector3.Distance(nearbyEnnemies[0].transform.position, transform.position) < 5 && canAttack){
+                    animator.SetTrigger("Attack1Trigger");
+                    agent.isStopped = true;
+                    canAttack = false;
+                    StartCoroutine(_WaitEndOfAttack(0.75f));
+                }
             }
+            else if (isFollowing)
+            {
+                agent.isStopped = false;
+                agent.destination = player.transform.position;
+            }
+            else{
+                //agent.isStopped = true;
+            }
+
+
+            //Get local velocity of charcter
+            float velocityXel = transform.InverseTransformDirection(agent.velocity).x;
+            float velocityZel = transform.InverseTransformDirection(agent.velocity).z;
+
+            //Update animator with movement values
+            animator.SetFloat("Velocity X", velocityXel);
+            animator.SetFloat("Velocity Z", velocityZel);
+
+           
         }
+    }
+
+    public IEnumerator _WaitEndOfAttack(float time){
+        yield return new WaitForSeconds(time);
+        canAttack = true;
+        agent.isStopped = false;
+
     }
 }

@@ -3,68 +3,51 @@ using System.Collections.Generic;
 using UnityEngine;
 using UnityEngine.AI;
 
-public class SimpleEnemyAI : AIUnit
+public class SimpleEnemyAI : Unit
 {
 
     private NavMeshAgent agent;
 
     public GameObject townHall;
-    private Vector3 currentTarget;
-    private List<AIUnit> nearbyTargets = new List<AIUnit>();
-    public LayerMask possiblesTargets;
+    private GameObject currentTarget;
+    private UnitTargetFinder finder;
+    private bool canAttack = true;
 
-    void Start()
+
+    public override void Start()
     {
+        base.Start();
         animator = GetComponent(typeof(Animator)) as Animator;
         agent = GetComponent(typeof(NavMeshAgent)) as NavMeshAgent;
-    }
-
-    private void OnTriggerEnter(Collider other)
-    {
-        if (possiblesTargets == (possiblesTargets | (1 << other.gameObject.layer)))
-        {
-            nearbyTargets.Add(other.gameObject.GetComponent<AIUnit>());
-        }
-    }
-
-    private void OnTriggerExit(Collider other)
-    {
-        foreach (AIUnit t in nearbyTargets)
-        {
-            if (other.gameObject == t.gameObject)
-            {
-                nearbyTargets.Remove(t);
-                return;
-            }
-        }
+        finder = GetComponentInChildren(typeof(UnitTargetFinder)) as UnitTargetFinder;
     }
 
 
     public void lookAround()
     {
-        Transform bestTarget = null;
+        GameObject bestTarget = null;
         float closestDistanceSqr = Mathf.Infinity;
         Vector3 currentPosition = transform.position;
 
-        nearbyTargets.RemoveAll(u => u.isDead);
 
-        if (nearbyTargets.Count == 0)
+        List<Unit> nearbyTargets = finder.getUnitsInArea();
+        if (nearbyTargets.Count == 0){
             return;
+        }
+            
+       
         
-        foreach (AIUnit potentialTarget in nearbyTargets)
+        foreach (Unit potentialTarget in nearbyTargets)
         {
-            if(potentialTarget.isDead){
-                
-            }
             Vector3 directionToTarget = potentialTarget.transform.position - currentPosition;
-            float dSqrToTarget = directionToTarget.sqrMagnitude;
+            float dSqrToTarget = getRealDistBetweenGameObject(potentialTarget.gameObject);
             if (dSqrToTarget < closestDistanceSqr)
             {
                 closestDistanceSqr = dSqrToTarget;
-                bestTarget = potentialTarget.transform;
+                bestTarget = potentialTarget.gameObject;
             }
         }
-        currentTarget = bestTarget.position;
+        currentTarget = bestTarget.gameObject;
 
     }
 
@@ -72,24 +55,59 @@ public class SimpleEnemyAI : AIUnit
 	public void findATarget()
     {
         //Default target
-        currentTarget = townHall.transform.position;
+        currentTarget = townHall;
         //Ennemy look around if the player, building or allie to the player is nearby
         lookAround();
+    }
+
+    private Vector3 getNearestPointTo(GameObject g){
+        Collider c = g.GetComponent<Collider>();
+        return c.ClosestPointOnBounds(this.transform.position);
+    }
+
+
+    private float getRealDistBetweenGameObject(GameObject b){
+
+        //Calculate distance between the 2 colliders
+        return Vector3.Distance(this.transform.position, getNearestPointTo(b));
     }
 
     // Update is called once per frame
     void Update()
     {
+        if(isDead){
+            agent.isStopped = true;
+            return;
+        }
         findATarget();
-        agent.destination = currentTarget;
+        agent.destination = getNearestPointTo(currentTarget);
 
-        if(Vector3.Distance(currentTarget, transform.position) < 10){
-            animator.SetTrigger("attack");
+
+        //Debug.Log("Distance : " + getRealDistBetweenGameObject(currentTarget) + " from : " + currentTarget.name + " -> " + getNearestPointTo(currentTarget) + " vs " + this.transform.position);
+        if(getRealDistBetweenGameObject(currentTarget) < 1.5f && canAttack){
+            animator.SetTrigger("Attack1Trigger");
+            agent.isStopped = true;
+            canAttack = false;
+            StartCoroutine(_WaitEndOfAttack(0.75f));
             //animator.ResetTrigger("attack");
 
         }
 
 
-        animator.SetBool("moving", (agent.velocity != (new Vector3(0,0,0))));
+        animator.SetBool("Moving", (agent.velocity != (new Vector3(0,0,0))));
+        float velocityXel = transform.InverseTransformDirection(agent.velocity).x;
+        float velocityZel = transform.InverseTransformDirection(agent.velocity).z;
+
+        //Update animator with movement values
+        animator.SetFloat("Velocity X", velocityXel);
+        animator.SetFloat("Velocity Z", velocityZel);
+    }
+
+    public IEnumerator _WaitEndOfAttack(float time)
+    {
+        yield return new WaitForSeconds(time);
+        canAttack = true;
+        agent.isStopped = false;
+
     }
 }

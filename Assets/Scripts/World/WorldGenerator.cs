@@ -173,7 +173,7 @@ public class WorldGenerator : MonoBehaviour
         }
 
 
-        for (int i = 0; i < widthOfTheWorld; i++)
+        /*for (int i = 0; i < widthOfTheWorld; i++)
         {
             for (int j = 0; j < lengthOfTheWorld; j++)
             {
@@ -192,7 +192,7 @@ public class WorldGenerator : MonoBehaviour
                     }
                 }
             }
-        }
+        }*/
 
 
 

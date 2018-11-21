@@ -9,7 +9,7 @@ public class Selection : MonoBehaviour {
     [SerializeField]
     GameObject area;
     [SerializeField]
-    public LayerMask CamOcclusion;
+    public LayerMask camOcclusion;
 
     private bool selecting = false;
     private Vector3 selectionPos;
@@ -27,7 +27,7 @@ public class Selection : MonoBehaviour {
         if (Input.GetKeyDown(KeyCode.C)) {
             Ray ray = Camera.main.ScreenPointToRay(new Vector3(Screen.width / 2, Screen.height*(2f/3), 0));
             RaycastHit hit;
-            if (Physics.Raycast(ray, out hit, 10000, CamOcclusion))
+            if (Physics.Raycast(ray, out hit, 10000, camOcclusion))
             {
                 foreach(SimpleFollowerAI follower in alliesFollowing){
                     follower.unFollow();
@@ -44,7 +44,7 @@ public class Selection : MonoBehaviour {
         {
             Ray ray = Camera.main.ScreenPointToRay(new Vector3(Screen.width / 2, Screen.height *(2f/3), 0));
             RaycastHit hit;
-            if (Physics.Raycast(ray, out hit,10000 ,CamOcclusion))
+            if (Physics.Raycast(ray, out hit,10000 ,camOcclusion))
             {
                 float distance = Vector3.Distance(selectionPos, hit.point);
                 instanciedArea.transform.localScale = new Vector3(distance, 1, distance);

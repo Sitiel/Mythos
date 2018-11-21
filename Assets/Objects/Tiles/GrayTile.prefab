@@ -20,7 +20,7 @@ GameObject:
   m_Component:
   - component: {fileID: 4574944847151040}
   - component: {fileID: 114724516492446554}
-  m_Layer: 0
+  m_Layer: 14
   m_Name: GrayTile
   m_TagString: Untagged
   m_Icon: {fileID: 0}
@@ -38,7 +38,7 @@ GameObject:
   - component: {fileID: 33944542155391388}
   - component: {fileID: 23604313671153400}
   - component: {fileID: 65760917948572858}
-  m_Layer: 0
+  m_Layer: 14
   m_Name: Tile
   m_TagString: Untagged
   m_Icon: {fileID: 0}
@@ -56,7 +56,7 @@ GameObject:
   - component: {fileID: 33007408426312326}
   - component: {fileID: 23084932002784784}
   - component: {fileID: 65889579640985952}
-  m_Layer: 2
+  m_Layer: 14
   m_Name: Top
   m_TagString: Untagged
   m_Icon: {fileID: 0}
