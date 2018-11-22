@@ -19,7 +19,7 @@ public class Unit : Entity
         }
 
 
-        if (lifeBefore > life)
+        if (lifeBefore > life && animator.GetCurrentAnimatorStateInfo(0).normalizedTime > 1 && !animator.IsInTransition(0))
         {
             animator.SetTrigger("GetHit3Trigger");
         }

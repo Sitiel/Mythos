@@ -218,27 +218,27 @@ public class RPGCharacterController : Unit{
 
     void Inputs(){
 		//Input abstraction for easier asset updates using outside control schemes
-		inputJump = Input.GetKeyDown("space");
+		inputJump = Input.GetButtonDown("Jump");
         inputLightHit = false;//Input.GetKeyDown("LightHit");
 		inputDeath = false;//Input.GetKeyDown("Death");
-        inputUnarmed = Input.GetKeyDown("u");
-		inputShield = Input.GetKeyDown("f");
-		inputAttackL = Input.GetKeyDown("m");
-		inputAttackR = Input.GetKeyDown("l");
+        inputUnarmed = false;// Input.GetKeyDown("u");
+		inputShield = Input.GetButtonDown("Shield");
+		inputAttackL = Input.GetButtonDown("HitLeft");
+        inputAttackR = Input.GetButtonDown("HitRight");
 		inputCastL = false;//Input.GetKeyDown("CastL");
         inputCastR = false;//Input.GetKeyDown("CastR");
-        inputSwitchUpDown = 0; //Input.GetAxisRaw("SwitchUpDown");
+        inputSwitchUpDown = Input.GetAxisRaw("SwitchUpDown");
         inputSwitchLeftRight = 0;// Input.GetAxisRaw("SwitchLeftRight");
 		inputStrafe = Input.GetKey(KeyCode.LeftShift);
 		inputTargetBlock = 0;//Input.GetAxisRaw("TargetBlock");
         inputDashVertical = 0;//Input.GetAxisRaw("DashVertical");
         inputDashHorizontal = 0;//Input.GetAxisRaw("DashHorizontal");
-        inputHorizontal = 0;//Input.GetAxisRaw("Horizontal");
-        inputVertical = 0;//Input.GetAxisRaw("Vertical");
-        inputUp = Input.GetKey("z");
+        inputHorizontal = Input.GetAxisRaw("Horizontal");
+        inputVertical = Input.GetAxisRaw("Vertical");
+        /*inputUp = Input.GetKey("z");
         inputDown = Input.GetKey("s");
         inputLeft = Input.GetKey("q");
-        inputRight = Input.GetKey("d");
+        inputRight = Input.GetKey("d");*/
         inputAiming = false;//Input.GetKeyDown("Aiming");
     }
 
@@ -566,13 +566,17 @@ public class RPGCharacterController : Unit{
 		if(!isRolling && !isAiming){
 			targetDashDirection = dh * right + dv * -forward;
 		}
-        int moveUp = inputUp ? 1 : 0;
+        /*int moveUp = inputUp ? 1 : 0;
         int moveDown = inputDown ? 1 : 0;
         int moveLeft = inputLeft ? 1 : 0;
         int moveRight = inputRight ? 1 : 0;
         z = moveUp + (moveDown*-1);
 		x = moveRight + (moveLeft *-1);
-		inputVec = x * right + z * forward;
+		inputVec = x * right + z * forward;*/
+        z = inputHorizontal;
+        x = inputVertical;
+        inputVec = z * right + x * -forward;
+
 	}
 
 	#endregion
