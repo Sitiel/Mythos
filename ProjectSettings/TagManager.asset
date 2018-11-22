@@ -18,10 +18,10 @@ TagManager:
   - PostProcessing
   - Player
   - Allies
-  - 
-  - 
-  - 
-  - 
+  - Enemies
+  - Buildings
+  - Bush
+  - Terrain
   - 
   - 
   - 

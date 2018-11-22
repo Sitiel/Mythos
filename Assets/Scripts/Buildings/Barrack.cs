@@ -4,14 +4,15 @@ using System.Collections;
 public class Barrack : Building
 {
 
-    float unitCreationTimer = 5f;
-    float currentTimer = 5f;
+    public float unitCreationTimer = 5f;
+    float currentTimer;
 
     public GameObject unitToCreate;
     public Transform spawnPoint;
 
     public override void Start()
     {
+        currentTimer = unitCreationTimer;
     }
 
 	// Update is called once per frame
@@ -21,8 +22,6 @@ public class Barrack : Building
             currentTimer -= Time.deltaTime;
             if(currentTimer <= 0){
                 currentTimer = unitCreationTimer;
-                Debug.Log("Spawn at -> " + spawnPoint.name);
-                Debug.Log(spawnPoint.position);
                 Instantiate(unitToCreate, spawnPoint.position, Quaternion.identity);
             }
         }

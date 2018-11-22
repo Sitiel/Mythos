@@ -4,7 +4,6 @@ using UnityEngine;
 
 public class Building : Entity {
 
-    public int goldCost = 0;
     public int woodCost = 0;
     public int stoneCost = 0;
     public int foodCost = 0;
@@ -19,10 +18,6 @@ public class Building : Entity {
 
     public void build(){
         resources = FindObjectOfType<Resources>();
-        if (goldCost != 0)
-        {
-            resources.updateGold(-goldCost);
-        }
 
         if (woodCost != 0)
         {
