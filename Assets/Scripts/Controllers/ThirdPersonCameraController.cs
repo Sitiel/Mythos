@@ -33,7 +33,7 @@ public class ThirdPersonCameraController : MonoBehaviour {
         {
             currentX += Input.GetAxis("Mouse X") * sensivityX;
             currentY = Mathf.Clamp(currentY - Input.GetAxis("Mouse Y") * sensivityY, minYAngle, maxYAngle);
-            distance = Mathf.Clamp(distance - Input.GetAxis("Mouse ScrollWheel"), 5, 25);
+            //distance = Mathf.Clamp(distance - Input.GetAxis("Mouse ScrollWheel"), 5, 25);
         }
     }
 
