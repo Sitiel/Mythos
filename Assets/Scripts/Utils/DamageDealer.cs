@@ -17,7 +17,6 @@ public class DamageDealer : MonoBehaviour {
 	{
         if(possiblesTargets == (possiblesTargets | (1 << other.gameObject.layer))){
             Damage d = new Damage(-damage, this.GetComponentInParent<Entity>());
-
             other.SendMessage("updateLife", d);
         }
 	}
