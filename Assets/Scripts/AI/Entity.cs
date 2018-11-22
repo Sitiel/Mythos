@@ -8,6 +8,8 @@ public class Entity : MonoBehaviour {
     protected Animator animator;
     protected Rigidbody body;
 
+    public Dictionary<Entity, float> invulnerability = new Dictionary<Entity, float>();
+
 	// Use this for initialization
 	public virtual void Start () {
         body = GetComponent<Rigidbody>();
@@ -23,10 +25,16 @@ public class Entity : MonoBehaviour {
 
     #region event
 
-    public virtual void updateLife(int value)
+    public virtual void updateLife(Damage d)
     {
-        this.life = Mathf.Clamp(this.life + value, 0, maxLife);
-        isDead = this.life == 0;
+        if(!invulnerability.ContainsKey(d.caller) || invulnerability[d.caller] + 1f < Time.time){;
+            this.life = Mathf.Clamp(this.life + d.nbDamage, 0, maxLife);
+            isDead = this.life == 0;
+            if (!invulnerability.ContainsKey(d.caller))
+                invulnerability.Add(d.caller, Time.time);
+            else
+                invulnerability[d.caller] = Time.time;
+        }
     }
 
     #endregion

@@ -5,9 +5,10 @@ public class Unit : Entity
 {
 
 	// Update is called once per frame
-    public override void updateLife(int value)
+    public override void updateLife(Damage d)
 	{
-        base.updateLife(value);
+        int lifeBefore = this.life;
+        base.updateLife(d);
 
         body.velocity = new Vector3(0, 0, 0);
         if (isDead)
@@ -18,7 +19,7 @@ public class Unit : Entity
         }
 
 
-        if (value < 0)
+        if (lifeBefore > life)
         {
             animator.SetTrigger("GetHit3Trigger");
         }

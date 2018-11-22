@@ -36,9 +36,9 @@ public class Building : Entity {
         isBuild = true;
     }
 
-    public override void updateLife(int value)
+    public override void updateLife(Damage d)
     {
-        base.updateLife(value);
+        base.updateLife(d);
         if(isDead){
             Destroy(this.gameObject);
         }
