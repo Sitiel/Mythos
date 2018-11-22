@@ -10,7 +10,7 @@ public class SimpleEnemyAI : Unit
 
     public GameObject townHall;
     private GameObject currentTarget;
-    private UnitTargetFinder finder;
+    private EntityTargetFinder finder;
     private bool canAttack = true;
 
 
@@ -19,7 +19,7 @@ public class SimpleEnemyAI : Unit
         base.Start();
         animator = GetComponent(typeof(Animator)) as Animator;
         agent = GetComponent(typeof(NavMeshAgent)) as NavMeshAgent;
-        finder = GetComponentInChildren(typeof(UnitTargetFinder)) as UnitTargetFinder;
+        finder = GetComponentInChildren(typeof(EntityTargetFinder)) as EntityTargetFinder;
     }
 
 
@@ -29,15 +29,14 @@ public class SimpleEnemyAI : Unit
         float closestDistanceSqr = Mathf.Infinity;
         Vector3 currentPosition = transform.position;
 
-
-        List<Unit> nearbyTargets = finder.getUnitsInArea();
+        List<Entity> nearbyTargets = finder.getEntitiesInArea();
         if (nearbyTargets.Count == 0){
             return;
         }
             
        
         
-        foreach (Unit potentialTarget in nearbyTargets)
+        foreach (Entity potentialTarget in nearbyTargets)
         {
             Vector3 directionToTarget = potentialTarget.transform.position - currentPosition;
             float dSqrToTarget = getRealDistBetweenGameObject(potentialTarget.gameObject);
@@ -60,17 +59,7 @@ public class SimpleEnemyAI : Unit
         lookAround();
     }
 
-    private Vector3 getNearestPointTo(GameObject g){
-        Collider c = g.GetComponent<Collider>();
-        return c.ClosestPointOnBounds(this.transform.position);
-    }
 
-
-    private float getRealDistBetweenGameObject(GameObject b){
-
-        //Calculate distance between the 2 colliders
-        return Vector3.Distance(this.transform.position, getNearestPointTo(b));
-    }
 
     // Update is called once per frame
     void Update()
@@ -82,9 +71,8 @@ public class SimpleEnemyAI : Unit
         findATarget();
         agent.destination = getNearestPointTo(currentTarget);
 
-
         //Debug.Log("Distance : " + getRealDistBetweenGameObject(currentTarget) + " from : " + currentTarget.name + " -> " + getNearestPointTo(currentTarget) + " vs " + this.transform.position);
-        if(getRealDistBetweenGameObject(currentTarget) < 1.5f && canAttack){
+        if(getRealDistBetweenGameObject(currentTarget) < .5f && canAttack){
             animator.SetTrigger("Attack1Trigger");
             agent.isStopped = true;
             canAttack = false;

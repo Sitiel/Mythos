@@ -8,14 +8,13 @@ public class SimpleFollowerAI : Unit {
     float moveSpeed = 7; 
     float rotationSpeed = 10;
     bool isFollowing = false;
-    [SerializeField]
     GameObject player;
     private Rigidbody rb;
 
     bool canAttack = true;
 
     private NavMeshAgent agent;
-    private UnitTargetFinder finder;
+    private EntityTargetFinder finder;
 
 	// Use this for initialization
     public override void Start () {
@@ -23,20 +22,18 @@ public class SimpleFollowerAI : Unit {
         animator = GetComponent(typeof(Animator)) as Animator;
         rb = GetComponent<Rigidbody>();
         agent = GetComponent(typeof(NavMeshAgent)) as NavMeshAgent;
-        finder = GetComponentInChildren(typeof(UnitTargetFinder)) as UnitTargetFinder;
-
+        finder = GetComponentInChildren(typeof(EntityTargetFinder)) as EntityTargetFinder;
+        player = FindObjectOfType<RPGCharacterController>().gameObject;
         
     }
 
 
     public void follow(){
-        animator.SetBool("Moving", true);
         isFollowing = true;
         agent.isStopped = false;
     }
 
     public void unFollow(){
-        animator.SetBool("Moving", false);
         isFollowing = false;
         agent.isStopped = true;
     }
@@ -50,10 +47,15 @@ public class SimpleFollowerAI : Unit {
         }
         else
         {
-            List<Unit> nearbyEnnemies = finder.getUnitsInArea();
+            List<Entity> nearbyEnnemies = finder.getEntitiesInArea();
             if(nearbyEnnemies.Count != 0){
-                agent.destination = nearbyEnnemies[0].transform.position;
-                if(Vector3.Distance(nearbyEnnemies[0].transform.position, transform.position) < 5 && canAttack){
+                agent.destination = getNearestPointTo(nearbyEnnemies[0].gameObject);
+                if (canAttack)
+                {
+                    agent.isStopped = false;
+                }
+
+                if(getRealDistBetweenGameObject(nearbyEnnemies[0].gameObject) < .5f && canAttack){
                     animator.SetTrigger("Attack1Trigger");
                     agent.isStopped = true;
                     canAttack = false;
@@ -69,7 +71,7 @@ public class SimpleFollowerAI : Unit {
                 //agent.isStopped = true;
             }
 
-
+            animator.SetBool("Moving", (agent.velocity != (new Vector3(0, 0, 0))));
             //Get local velocity of charcter
             float velocityXel = transform.InverseTransformDirection(agent.velocity).x;
             float velocityZel = transform.InverseTransformDirection(agent.velocity).z;

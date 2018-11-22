@@ -89,7 +89,7 @@ public class ConstructionUI : MonoBehaviour {
             if (Physics.Raycast(ray, out hit,10000, camOcclusion))
             {
                 instanciatedBuilding.transform.position = new Vector3(hit.point.x, hit.point.y, hit.point.z);
-                instanciatedBuilding.transform.rotation = Quaternion.Euler(0, playerCameraController.transform.eulerAngles.y, 0);
+                instanciatedBuilding.transform.rotation = Quaternion.Euler(instanciatedBuilding.transform.eulerAngles.x, playerCameraController.transform.eulerAngles.y, instanciatedBuilding.transform.eulerAngles.z);
                 //Debug.Log("Angle : " + Vector3.Angle(instanciatedBuilding.transform.position, playerCameraController.transform.position));
             }
 
@@ -104,6 +104,8 @@ public class ConstructionUI : MonoBehaviour {
                 }
                 rend.material = defaultMaterial;
                 instanciatedBuilding.GetComponentInChildren<Collider>().enabled = true;
+                instanciatedBuilding.GetComponent<Building>().build();
+                Debug.Log("Build !");
             }
         }
 
@@ -111,7 +113,7 @@ public class ConstructionUI : MonoBehaviour {
 
     public void constructBuilding(GameObject building){
         isBuilding = true;
-        instanciatedBuilding = Instantiate(building, new Vector3(0, 0, 0), Quaternion.identity);
+        instanciatedBuilding = Instantiate(building);
         Renderer rend = instanciatedBuilding.GetComponentInChildren<Renderer>();
         if(instanciatedBuilding.GetComponentInChildren<Collider>() != null)
             instanciatedBuilding.GetComponentInChildren<Collider>().enabled = false;

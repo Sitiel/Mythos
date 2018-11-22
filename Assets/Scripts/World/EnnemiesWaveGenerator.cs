@@ -16,13 +16,13 @@ public class EnnemiesWaveGenerator : MonoBehaviour {
         foreach(Wave w in waves){
             if(!w.alreadyDone && globalTime > w.time){
                 w.alreadyDone = true;
-                float x = 1;
-                float y = 1;
+                float x = transform.position.x;
+                float y = transform.position.z;
                 for (int i = 0; i < w.nbFantassins; i++){
                     x++;
-                    if (x > 5)
+                    if (x > transform.position.x + 5)
                     {
-                        x = 1;
+                        x = transform.position.x;
                         y++;
                     }
                     SimpleEnemyAI f = Instantiate(fantassin, new Vector3(x, -1, y), Quaternion.identity);

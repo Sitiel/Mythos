@@ -2,10 +2,10 @@ using UnityEngine;
 using System.Collections;
 using System.Collections.Generic;
 
-public class UnitTargetFinder : MonoBehaviour
+public class EntityTargetFinder : MonoBehaviour
 {
 
-    private List<Unit> nearbyTargets = new List<Unit>();
+    private List<Entity> nearbyTargets = new List<Entity>();
     public LayerMask possiblesTargets;
 	// Use this for initialization
 	void Start()
@@ -23,8 +23,8 @@ public class UnitTargetFinder : MonoBehaviour
     {
         if (possiblesTargets == (possiblesTargets | (1 << other.gameObject.layer)))
         {
-            if (other.gameObject.GetComponent<Unit>() != null){
-                nearbyTargets.Add(other.gameObject.GetComponent<Unit>());
+            if (other.gameObject.GetComponent<Entity>() != null){
+                nearbyTargets.Add(other.gameObject.GetComponent<Entity>());
             }
                 
         }
@@ -33,7 +33,7 @@ public class UnitTargetFinder : MonoBehaviour
 
     private void OnTriggerExit(Collider other)
     {
-        foreach (Unit t in nearbyTargets)
+        foreach (Entity t in nearbyTargets)
         {
             if (other.gameObject == t.gameObject)
             {
@@ -43,7 +43,7 @@ public class UnitTargetFinder : MonoBehaviour
         }
     }
 
-    public List<Unit> getUnitsInArea(){
+    public List<Entity> getEntitiesInArea(){
         nearbyTargets.RemoveAll(u => u.isDead);
         return nearbyTargets;
     }
