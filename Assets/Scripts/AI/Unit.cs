@@ -7,6 +7,8 @@ public class Unit : Entity
 	// Update is called once per frame
     public override void updateLife(Damage d)
 	{
+        if (isDead)
+            return;
         int lifeBefore = this.life;
         base.updateLife(d);
 

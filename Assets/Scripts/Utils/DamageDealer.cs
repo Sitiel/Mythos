@@ -7,17 +7,21 @@ public class DamageDealer : MonoBehaviour {
 
     public LayerMask possiblesTargets;
     public int damage=1;
+    private Entity entity;
 
 	// Use this for initialization
 	void Start () {
-		
+        entity = GetComponentInParent<Entity>();
 	}
 
 	private void OnTriggerEnter(Collider other)
 	{
+        if(entity.isDead){
+            return;
+        }
         if(possiblesTargets == (possiblesTargets | (1 << other.gameObject.layer))){
             Damage d = new Damage(-damage, this.GetComponentInParent<Entity>());
-            other.SendMessage("updateLife", d);
+           other.SendMessage("updateLife", d);
         }
 	}
 }

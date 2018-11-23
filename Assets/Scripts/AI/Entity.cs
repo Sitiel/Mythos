@@ -27,6 +27,8 @@ public class Entity : MonoBehaviour {
 
     public virtual void updateLife(Damage d)
     {
+        if (isDead)
+            return;
         if(!invulnerability.ContainsKey(d.caller) || invulnerability[d.caller] + 1f < Time.time){;
             this.life = Mathf.Clamp(this.life + d.nbDamage, 0, maxLife);
             isDead = this.life == 0;
