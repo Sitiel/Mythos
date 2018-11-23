@@ -21,6 +21,7 @@ public class Barrack : Building
         if(isBuild){
             currentTimer -= Time.deltaTime;
             if(currentTimer <= 0){
+                Debug.Log("Spawn");
                 currentTimer = unitCreationTimer;
                 Instantiate(unitToCreate, spawnPoint.position, Quaternion.identity);
             }

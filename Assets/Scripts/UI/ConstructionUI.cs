@@ -95,10 +95,10 @@ public class ConstructionUI : MonoBehaviour {
 
             if(Input.GetMouseButtonDown(0)){
                 isBuilding = false;
-                Renderer rend = instanciatedBuilding.GetComponentInChildren<Renderer>();
+                Renderer rend = instanciatedBuilding.GetComponent<Renderer>();
                 if (rend == null)
                 {
-                    rend = instanciatedBuilding.transform.GetChild(0).GetComponentInChildren<Renderer>();
+                    rend = instanciatedBuilding.GetComponentInChildren<Renderer>();
                     if (rend == null)
                         return;
                 }
@@ -114,12 +114,12 @@ public class ConstructionUI : MonoBehaviour {
     public void constructBuilding(GameObject building){
         isBuilding = true;
         instanciatedBuilding = Instantiate(building);
-        Renderer rend = instanciatedBuilding.GetComponentInChildren<Renderer>();
+        Renderer rend = instanciatedBuilding.GetComponent<Renderer>();
         if(instanciatedBuilding.GetComponentInChildren<Collider>() != null)
             instanciatedBuilding.GetComponentInChildren<Collider>().enabled = false;
         if (rend == null)
         {
-            rend = instanciatedBuilding.transform.GetChild(0).GetComponentInChildren<Renderer>();
+            rend = instanciatedBuilding.GetComponentInChildren<Renderer>();
             if (rend == null)
             {
                 Debug.Log("Material not found on : " + instanciatedBuilding.name);
