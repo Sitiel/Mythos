@@ -463,7 +463,10 @@ MonoBehaviour:
   m_Script: {fileID: 11500000, guid: 1cfc0909f0f064519a8661eac91a95ed, type: 3}
   m_Name: 
   m_EditorClassIdentifier: 
-  waves: []
+  waves:
+  - nbFantassins: 40
+    alreadyDone: 0
+    time: 0
   fantassin: {fileID: 114364794317280966, guid: d53d65226000343888b8f33773584bad,
     type: 2}
   townHall: {fileID: 1194429386}
