@@ -7,11 +7,12 @@ public class DamageDealer : MonoBehaviour {
 
     public LayerMask possiblesTargets;
     public int damage=1;
-    private Entity entity;
+    public Entity entity = null;
 
 	// Use this for initialization
 	void Start () {
-        entity = GetComponentInParent<Entity>();
+        if(entity == null)
+            entity = GetComponentInParent<Entity>();
 	}
 
 	private void OnTriggerEnter(Collider other)

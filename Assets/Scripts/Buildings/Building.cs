@@ -10,14 +10,14 @@ public class Building : Entity {
     public bool isBuild = false;
 
 
-    private Resources resources;
+    private GameResources resources;
     
     public override void Start () {
         
 	}
 
     public void build(){
-        resources = FindObjectOfType<Resources>();
+        resources = FindObjectOfType<GameResources>();
 
         if (woodCost != 0)
         {
@@ -40,7 +40,9 @@ public class Building : Entity {
     {
         base.updateLife(d);
         if(isDead){
-            Destroy(this.gameObject);
+            Debug.Log("Explode !");
+            GetComponentInChildren<FracturedObject>().ExplodeChunks(100f, new Vector3(transform.position.x, 0, transform.position.z), 100f);
+            Destroy(this.gameObject, 30);
         }
     }
 }

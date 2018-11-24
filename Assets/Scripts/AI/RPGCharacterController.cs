@@ -200,13 +200,17 @@ public class RPGCharacterController : Unit{
 
 	#region Initialization
 
-	void Awake(){
+	public void Ready(){
 		//set the components
 		navMeshAgent = GetComponent<UnityEngine.AI.NavMeshAgent>();
 		animator = GetComponentInChildren<Animator>();
 		rb = GetComponent<Rigidbody>();
 		capCollider = GetComponent<CapsuleCollider>();
-		FXSplash = transform.GetChild(2).GetComponent<ParticleSystem>();
+        //FXSplash = transform.GetChild(2).GetComponent<ParticleSystem>();
+        Transform rightHand = transform.Find("Root/Global/Position/Hips/LowerBack/Spine/Spine1/RightShoulder/RightArm/RightForeArm/RightHand");
+        twoHandAxe.transform.parent = rightHand;
+        twoHandSword.transform.parent = rightHand;
+
 		HideAllWeapons();
 	}
 
@@ -700,7 +704,7 @@ public class RPGCharacterController : Unit{
 			animator.SetInteger("RightWeapon", 0);
 			animator.SetInteger("LeftWeapon", 0);
 			animator.SetInteger("LeftRight", 0);
-			FXSplash.Emit(30);
+			//FXSplash.Emit(30);
 		}
 		else if(collide.transform.parent != null){
 			if(collide.transform.parent.name.Contains("Ladder")){

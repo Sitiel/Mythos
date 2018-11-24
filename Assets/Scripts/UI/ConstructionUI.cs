@@ -114,6 +114,9 @@ public class ConstructionUI : MonoBehaviour {
     public void constructBuilding(GameObject building){
         isBuilding = true;
         instanciatedBuilding = Instantiate(building);
+        //Renderer rend = instanciatedBuilding.GetComponent<Renderer>();
+
+
         Renderer rend = instanciatedBuilding.GetComponent<Renderer>();
         if(instanciatedBuilding.GetComponentInChildren<Collider>() != null)
             instanciatedBuilding.GetComponentInChildren<Collider>().enabled = false;

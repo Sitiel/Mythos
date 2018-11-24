@@ -3,7 +3,7 @@ using System.Collections.Generic;
 using UnityEngine;
 using UnityEngine.UI;
 
-public class Resources : MonoBehaviour {
+public class GameResources : MonoBehaviour {
     public Text foodText;
     public Text woodText;
     public Text stoneText;

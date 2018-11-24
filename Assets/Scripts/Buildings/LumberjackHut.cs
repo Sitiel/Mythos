@@ -5,12 +5,12 @@ public class LumberjackHut : Building
 {
     public float woodCreationTimer = 5f;
     float currentTimer;
-    Resources resources;
+    GameResources resources;
 
     public override void Start()
     {
         currentTimer = woodCreationTimer;
-        resources = FindObjectOfType<Resources>();
+        resources = FindObjectOfType<GameResources>();
     }
 
     // Update is called once per frame
