@@ -2,10 +2,12 @@
 using System.Collections.Generic;
 using UnityEngine;
 
-public class ConstructionUI : MonoBehaviour {
+public class UIManager : MonoBehaviour {
 
     [SerializeField]
-    GameObject panel;
+    GameObject constructionPanel;
+    [SerializeField]
+    GameObject bookPanel;
     [SerializeField]
     ThirdPersonCameraController playerCameraController;
 
@@ -22,7 +24,8 @@ public class ConstructionUI : MonoBehaviour {
 
 	// Use this for initialization
 	void Start () {	
-        panel.SetActive(false);
+        constructionPanel.SetActive(false);
+        bookPanel.SetActive(false);
 	}
 
     private void setMaterialAvailable()
@@ -70,13 +73,13 @@ public class ConstructionUI : MonoBehaviour {
 	void Update () {
         if(panelEnabled && Input.GetKeyUp(KeyCode.Tab)){
             panelEnabled = false;
-            panel.SetActive(false);
+            constructionPanel.SetActive(false);
             Cursor.visible = false;
             playerCameraController.movingCamera = true;
         }
 
         if(!panelEnabled && Input.GetKeyDown(KeyCode.Tab)){
-            panel.SetActive(true);
+            constructionPanel.SetActive(true);
             panelEnabled = true;
             Cursor.visible = true;
             playerCameraController.movingCamera = false;
@@ -107,6 +110,12 @@ public class ConstructionUI : MonoBehaviour {
                 instanciatedBuilding.GetComponent<Building>().build();
                 Debug.Log("Build !");
             }
+        }
+
+        if(!panelEnabled && Input.GetKeyDown(KeyCode.J)){
+            bookPanel.SetActive(!bookPanel.activeSelf);
+            Cursor.visible = bookPanel.activeSelf;
+            playerCameraController.movingCamera = !bookPanel.activeSelf;
         }
 
 	}
