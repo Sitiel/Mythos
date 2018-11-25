@@ -1,0 +1,17 @@
+%YAML 1.1
+%TAG !u! tag:unity3d.com,2011:
+--- !u!114 &11400000
+MonoBehaviour:
+  m_ObjectHideFlags: 0
+  m_CorrespondingSourceObject: {fileID: 0}
+  m_PrefabInternal: {fileID: 0}
+  m_GameObject: {fileID: 0}
+  m_Enabled: 1
+  m_EditorHideFlags: 0
+  m_Script: {fileID: 11500000, guid: 94b057dea0d55462a9b27590379ecbb3, type: 3}
+  m_Name: House
+  m_EditorClassIdentifier: 
+  preview_ok: {fileID: 1436716731582124, guid: 91dd0961eae4c40f2b0fef0d304aaa9a, type: 2}
+  preview_nok: {fileID: 1588023543481744, guid: 7ed672e72b5124d5b9d1ed09e9e2ce20,
+    type: 2}
+  building: {fileID: 1561904052027680, guid: 8186140b88a514c3db41ec4ed6d4f3e9, type: 2}

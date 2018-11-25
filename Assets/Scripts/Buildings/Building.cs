@@ -40,8 +40,10 @@ public class Building : Entity {
     {
         base.updateLife(d);
         if(isDead){
-            Debug.Log("Explode !");
-            GetComponentInChildren<FracturedObject>().ExplodeChunks(100f, new Vector3(transform.position.x, 0, transform.position.z), 100f);
+            GetComponent<Collider>().enabled = false;
+            FracturedObject f = transform.parent.GetComponentInChildren<FracturedObject>();
+            f.SupportChunksAreIndestructible = false;
+            f.Explode(new Vector3(transform.position.x, 0, transform.position.z), 100f, 100f, false, false,false,false);
             Destroy(this.gameObject, 30);
         }
     }

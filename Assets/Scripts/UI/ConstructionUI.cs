@@ -14,27 +14,15 @@ public class ConstructionUI : MonoBehaviour {
     private GameObject instanciatedBuilding;
     private Material defaultMaterial;
     public LayerMask camOcclusion;
+    Build currentBuild;
 
-    [SerializeField]
-    private Material constructingMaterial;
-    [SerializeField]
-    private Material constructingErrorMaterial;
 
 	// Use this for initialization
 	void Start () {	
         panel.SetActive(false);
+        Cursor.visible = false;
+        Cursor.lockState = CursorLockMode.Locked;
 	}
-
-    private void setMaterialAvailable()
-    {
-        setConstructingMaterial(constructingMaterial);
-    }
-
-    private void setMaterialError()
-    {
-        setConstructingMaterial(constructingErrorMaterial);
-    }
-
 
     private void cancelBuild()
     {
@@ -46,25 +34,6 @@ public class ConstructionUI : MonoBehaviour {
     }
 
 
-    private void setConstructingMaterial(Material material)
-    {
-
-        if (instanciatedBuilding == null)
-        {
-            return;
-        }
-
-        Renderer rend = instanciatedBuilding.transform.GetChild(0).GetComponent<Renderer>();
-        if (rend == null)
-        {
-            rend = instanciatedBuilding.transform.GetChild(0).GetChild(0).GetComponent<Renderer>();
-            if (rend == null)
-                return;
-        }
-        rend.material = material;
-    }
-
-
 
 	// Update is called once per frame
 	void Update () {
@@ -72,6 +41,7 @@ public class ConstructionUI : MonoBehaviour {
             panelEnabled = false;
             panel.SetActive(false);
             Cursor.visible = false;
+            Cursor.lockState = CursorLockMode.Locked;
             playerCameraController.movingCamera = true;
         }
 
@@ -79,6 +49,7 @@ public class ConstructionUI : MonoBehaviour {
             panel.SetActive(true);
             panelEnabled = true;
             Cursor.visible = true;
+            Cursor.lockState = CursorLockMode.None;
             playerCameraController.movingCamera = false;
         }
 
@@ -90,46 +61,25 @@ public class ConstructionUI : MonoBehaviour {
             {
                 instanciatedBuilding.transform.position = new Vector3(hit.point.x, hit.point.y, hit.point.z);
                 instanciatedBuilding.transform.rotation = Quaternion.Euler(instanciatedBuilding.transform.eulerAngles.x, playerCameraController.transform.eulerAngles.y, instanciatedBuilding.transform.eulerAngles.z);
-                //Debug.Log("Angle : " + Vector3.Angle(instanciatedBuilding.transform.position, playerCameraController.transform.position));
-            }
+           }
 
             if(Input.GetMouseButtonDown(0)){
+                Vector3 lastPos = instanciatedBuilding.transform.position;
+                Quaternion lastRot = instanciatedBuilding.transform.rotation;
+                Destroy(instanciatedBuilding);
+                instanciatedBuilding = Instantiate(currentBuild.building, lastPos, lastRot);
                 isBuilding = false;
-                Renderer rend = instanciatedBuilding.GetComponent<Renderer>();
-                if (rend == null)
-                {
-                    rend = instanciatedBuilding.GetComponentInChildren<Renderer>();
-                    if (rend == null)
-                        return;
-                }
-                rend.material = defaultMaterial;
-                instanciatedBuilding.GetComponentInChildren<Collider>().enabled = true;
-                instanciatedBuilding.GetComponent<Building>().build();
+
+                instanciatedBuilding.GetComponentInChildren<Building>().build();
                 Debug.Log("Build !");
             }
         }
 
 	}
 
-    public void constructBuilding(GameObject building){
+    public void constructBuilding(Build build){
+        currentBuild = build;
         isBuilding = true;
-        instanciatedBuilding = Instantiate(building);
-        //Renderer rend = instanciatedBuilding.GetComponent<Renderer>();
-
-
-        Renderer rend = instanciatedBuilding.GetComponent<Renderer>();
-        if(instanciatedBuilding.GetComponentInChildren<Collider>() != null)
-            instanciatedBuilding.GetComponentInChildren<Collider>().enabled = false;
-        if (rend == null)
-        {
-            rend = instanciatedBuilding.GetComponentInChildren<Renderer>();
-            if (rend == null)
-            {
-                Debug.Log("Material not found on : " + instanciatedBuilding.name);
-                return;
-            }
-        }
-        defaultMaterial = rend.material;
-        setMaterialAvailable();
+        instanciatedBuilding = Instantiate(currentBuild.preview_ok);
     } 
 }

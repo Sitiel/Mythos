@@ -1,0 +1,17 @@
+%YAML 1.1
+%TAG !u! tag:unity3d.com,2011:
+--- !u!114 &11400000
+MonoBehaviour:
+  m_ObjectHideFlags: 0
+  m_CorrespondingSourceObject: {fileID: 0}
+  m_PrefabInternal: {fileID: 0}
+  m_GameObject: {fileID: 0}
+  m_Enabled: 1
+  m_EditorHideFlags: 0
+  m_Script: {fileID: 11500000, guid: 94b057dea0d55462a9b27590379ecbb3, type: 3}
+  m_Name: Townhall
+  m_EditorClassIdentifier: 
+  preview_ok: {fileID: 1853533343866372, guid: 68002e75548904922921834cc6d00744, type: 2}
+  preview_nok: {fileID: 1241349601094496, guid: 305e1fd7738f14bff964eff61a070bc4,
+    type: 2}
+  building: {fileID: 1973003046081870, guid: cd2882b03040b4040b6d58edc6a10e4a, type: 2}

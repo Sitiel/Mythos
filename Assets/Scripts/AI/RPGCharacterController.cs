@@ -207,9 +207,22 @@ public class RPGCharacterController : Unit{
 		rb = GetComponent<Rigidbody>();
 		capCollider = GetComponent<CapsuleCollider>();
         //FXSplash = transform.GetChild(2).GetComponent<ParticleSystem>();
+
+        //Place weapons with UMA
+
         Transform rightHand = transform.Find("Root/Global/Position/Hips/LowerBack/Spine/Spine1/RightShoulder/RightArm/RightForeArm/RightHand");
+
+        Vector3 old = twoHandAxe.transform.localPosition;
+        Quaternion oldQ = twoHandAxe.transform.localRotation;
         twoHandAxe.transform.parent = rightHand;
+        twoHandAxe.transform.localPosition = old;
+        twoHandAxe.transform.localRotation = oldQ;
+
+        old = twoHandSword.transform.localPosition;
+        oldQ = twoHandSword.transform.localRotation;
         twoHandSword.transform.parent = rightHand;
+        twoHandSword.transform.localPosition = old;
+        twoHandSword.transform.localRotation = oldQ;
 
 		HideAllWeapons();
 	}
