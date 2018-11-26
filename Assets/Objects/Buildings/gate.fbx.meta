@@ -1,5 +1,5 @@
 fileFormatVersion: 2
-guid: 5e4d28b3301484831aa0d8cc29720306
+guid: eeead42dbcf465946aa5d50067702d1d
 ModelImporter:
   serializedVersion: 23
   fileIDToRecycleName:
@@ -20,22 +20,7 @@ ModelImporter:
     4300000: Mesh1 Composant_3_1 Composant_4_1 Greek_construction1 Model
     10800000: Lamp
     2186277476908879412: ImportLogs
-  externalObjects:
-  - first:
-      type: UnityEngine:Material
-      assembly: UnityEngine.CoreModule
-      name: Color_000.001
-    second: {fileID: 2100000, guid: 576ea8c64e7864e8d8aa8c78719c1664, type: 2}
-  - first:
-      type: UnityEngine:Material
-      assembly: UnityEngine.CoreModule
-      name: Color_A06.001
-    second: {fileID: 2100000, guid: e2bcb998a64e349f891a5acad3605d33, type: 2}
-  - first:
-      type: UnityEngine:Material
-      assembly: UnityEngine.CoreModule
-      name: FrontColor.001
-    second: {fileID: 2100000, guid: 94e8605d347894d8c83e9b8f5bb7091c, type: 2}
+  externalObjects: {}
   materials:
     importMaterials: 1
     materialName: 0
