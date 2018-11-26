@@ -2455,7 +2455,7 @@ MonoBehaviour:
   maxLife: 100
   isDead: 0
   woodCost: 0
-  stoneCost: 0
+  stoneCost: 200
   foodCost: 0
   isBuild: 0
 --- !u!114 &114110563506076958

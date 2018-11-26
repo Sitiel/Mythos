@@ -257,7 +257,7 @@ GameObject:
   m_Component:
   - component: {fileID: 4479940251061720}
   - component: {fileID: 64642891672154298}
-  - component: {fileID: 114486031687102332}
+  - component: {fileID: 114727203754844558}
   m_Layer: 12
   m_Name: Transforms
   m_TagString: Untagged
@@ -591,7 +591,7 @@ Transform:
   m_CorrespondingSourceObject: {fileID: 0}
   m_PrefabInternal: {fileID: 100100000}
   m_GameObject: {fileID: 1743513449012892}
-  m_LocalRotation: {x: -0.5, y: -0.5, z: 0.5, w: 0.5}
+  m_LocalRotation: {x: 0.7071068, y: 0.7071068, z: 0, w: 0}
   m_LocalPosition: {x: 0, y: 0, z: 0}
   m_LocalScale: {x: 100, y: 100, z: 100}
   m_Children:
@@ -599,7 +599,7 @@ Transform:
   - {fileID: 4143717814164728}
   m_Father: {fileID: 4303380500506646}
   m_RootOrder: 0
-  m_LocalEulerAnglesHint: {x: 0, y: -90.00001, z: 90}
+  m_LocalEulerAnglesHint: {x: 0, y: 180, z: 90}
 --- !u!4 &4508400657921388
 Transform:
   m_ObjectHideFlags: 1
@@ -2623,24 +2623,6 @@ MonoBehaviour:
   m_qInitialLocalRotation: {x: -0, y: -0, z: -0, w: 1}
   m_v3InitialLocalScale: {x: 1, y: 1, z: 1}
   m_bInitialLocalRotScaleInitialized: 1
---- !u!114 &114486031687102332
-MonoBehaviour:
-  m_ObjectHideFlags: 1
-  m_CorrespondingSourceObject: {fileID: 0}
-  m_PrefabInternal: {fileID: 100100000}
-  m_GameObject: {fileID: 1743513449012892}
-  m_Enabled: 1
-  m_EditorHideFlags: 0
-  m_Script: {fileID: 11500000, guid: b607a4bcc93c9425db1f6961666d9bc2, type: 3}
-  m_Name: 
-  m_EditorClassIdentifier: 
-  life: 100
-  maxLife: 100
-  isDead: 0
-  woodCost: 0
-  stoneCost: 0
-  foodCost: 0
-  isBuild: 0
 --- !u!114 &114518819716958840
 MonoBehaviour:
   m_ObjectHideFlags: 1
@@ -2857,6 +2839,24 @@ MonoBehaviour:
   m_qInitialLocalRotation: {x: -0, y: -0, z: -0, w: 1}
   m_v3InitialLocalScale: {x: 1, y: 1, z: 1}
   m_bInitialLocalRotScaleInitialized: 1
+--- !u!114 &114727203754844558
+MonoBehaviour:
+  m_ObjectHideFlags: 1
+  m_CorrespondingSourceObject: {fileID: 0}
+  m_PrefabInternal: {fileID: 100100000}
+  m_GameObject: {fileID: 1743513449012892}
+  m_Enabled: 1
+  m_EditorHideFlags: 0
+  m_Script: {fileID: 11500000, guid: aaa23c764a5884510bfd59b24ae0afe9, type: 3}
+  m_Name: 
+  m_EditorClassIdentifier: 
+  life: 100
+  maxLife: 100
+  isDead: 0
+  woodCost: 50
+  stoneCost: 0
+  foodCost: 0
+  isBuild: 0
 --- !u!114 &114739573945138498
 MonoBehaviour:
   m_ObjectHideFlags: 1

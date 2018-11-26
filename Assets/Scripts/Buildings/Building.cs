@@ -16,7 +16,7 @@ public class Building : Entity {
         
 	}
 
-    public void build(){
+    public virtual void build(){
         resources = FindObjectOfType<GameResources>();
 
         if (woodCost != 0)
