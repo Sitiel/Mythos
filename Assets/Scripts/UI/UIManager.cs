@@ -17,14 +17,15 @@ public class UIManager : MonoBehaviour {
     private Material defaultMaterial;
     public LayerMask camOcclusion;
     Build currentBuild;
+    bool possibleToConstruct;
 
 
 	// Use this for initialization
 	void Start () {	
-        panel.SetActive(false);
         Cursor.visible = false;
         Cursor.lockState = CursorLockMode.Locked;
         bookPanel.SetActive(false);
+        constructionPanel.SetActive(false);
 	}
 
     private void cancelBuild()
@@ -62,11 +63,25 @@ public class UIManager : MonoBehaviour {
             RaycastHit hit;
             if (Physics.Raycast(ray, out hit,10000, camOcclusion))
             {
+                
+                if(hit.point.y > 0.3 && possibleToConstruct){
+                    Destroy(instanciatedBuilding);
+                    instanciatedBuilding = Instantiate(currentBuild.preview_nok);
+                    possibleToConstruct = false;
+                }
+                else if(hit.point.y < 1 && !possibleToConstruct){
+                    Destroy(instanciatedBuilding);
+                    instanciatedBuilding = Instantiate(currentBuild.preview_ok);
+                    possibleToConstruct = true;
+                }
                 instanciatedBuilding.transform.position = new Vector3(hit.point.x, hit.point.y, hit.point.z);
                 instanciatedBuilding.transform.rotation = Quaternion.Euler(instanciatedBuilding.transform.eulerAngles.x, playerCameraController.transform.eulerAngles.y, instanciatedBuilding.transform.eulerAngles.z);
-           }
 
-            if(Input.GetMouseButtonDown(0)){
+            }
+
+
+            if (Input.GetMouseButtonDown(0))
+            {
                 Vector3 lastPos = instanciatedBuilding.transform.position;
                 Quaternion lastRot = instanciatedBuilding.transform.rotation;
                 Destroy(instanciatedBuilding);
@@ -75,6 +90,13 @@ public class UIManager : MonoBehaviour {
 
                 instanciatedBuilding.GetComponentInChildren<Building>().build();
                 Debug.Log("Build !");
+            }
+
+            if (Input.GetMouseButtonDown(1))
+            {
+                Destroy(instanciatedBuilding);
+                isBuilding = false;
+                Debug.Log("Cancel !");
             }
         }
 
@@ -90,5 +112,6 @@ public class UIManager : MonoBehaviour {
         currentBuild = build;
         isBuilding = true;
         instanciatedBuilding = Instantiate(currentBuild.preview_ok);
+        possibleToConstruct = true;
     } 
 }

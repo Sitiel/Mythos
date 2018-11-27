@@ -9,6 +9,7 @@ public class Unit : Entity
 	{
         if (isDead)
             return;
+
         int lifeBefore = this.life;
         base.updateLife(d);
 

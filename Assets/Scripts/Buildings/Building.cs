@@ -19,6 +19,11 @@ public class Building : Entity {
     public virtual void build(){
         resources = FindObjectOfType<GameResources>();
 
+        if(resources.wood < woodCost || resources.food < foodCost || resources.stone < stoneCost){
+            Destroy(this.gameObject);
+            return;
+        }
+
         if (woodCost != 0)
         {
             resources.updateWood(-woodCost);

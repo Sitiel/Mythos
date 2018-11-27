@@ -15,6 +15,10 @@ public class Entity : MonoBehaviour {
         body = GetComponent<Rigidbody>();
 	}
 
+    public virtual void Ready(){
+        body = GetComponent<Rigidbody>();
+    }
+
 
     //Attributes of the player related to the game
     public int life = 100;

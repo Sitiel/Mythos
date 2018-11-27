@@ -69,6 +69,8 @@ public class SimpleEnemyAI : Unit
             return;
         }
         findATarget();
+        if (currentTarget == null)
+            return;
         agent.destination = getNearestPointTo(currentTarget);
 
         //Debug.Log("Distance : " + getRealDistBetweenGameObject(currentTarget) + " from : " + currentTarget.name + " -> " + getNearestPointTo(currentTarget) + " vs " + this.transform.position);

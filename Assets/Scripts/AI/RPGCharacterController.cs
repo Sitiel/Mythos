@@ -200,7 +200,7 @@ public class RPGCharacterController : Unit{
 
 	#region Initialization
 
-	public void Ready(){
+    public override void Ready(){
 		//set the components
 		navMeshAgent = GetComponent<UnityEngine.AI.NavMeshAgent>();
 		animator = GetComponentInChildren<Animator>();

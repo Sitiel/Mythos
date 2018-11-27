@@ -9,7 +9,8 @@ public class ThirdPersonCameraController : MonoBehaviour {
     Transform lookAt;
 
     [SerializeField]
-    private float distance = 10.0f;
+    private List<float> distances;
+    int currentDistance = 0;
 
     [SerializeField]
     private float minYAngle;
@@ -35,6 +36,9 @@ public class ThirdPersonCameraController : MonoBehaviour {
             currentY = Mathf.Clamp(currentY - Input.GetAxis("Mouse Y") * sensivityY, minYAngle, maxYAngle);
             //distance = Mathf.Clamp(distance - Input.GetAxis("Mouse ScrollWheel"), 5, 25);
         }
+        if(Input.GetKeyDown(KeyCode.V)){
+            currentDistance = (currentDistance + 1) % distances.Count;
+        }
     }
 
 
@@ -48,9 +52,15 @@ public class ThirdPersonCameraController : MonoBehaviour {
         }
     }
 
+
+
+
+
+
     private void LateUpdate()
     {
-        Vector3 dir = new Vector3(0, 0, -distance);
+        
+        Vector3 dir = new Vector3(0, 0, -distances[currentDistance]);
         Quaternion rotation = Quaternion.Euler(currentY, currentX, 0);
         transform.position = lookAt.position + rotation * dir;
         collisionReplacementForCamera();
