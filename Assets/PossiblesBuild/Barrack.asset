@@ -1,0 +1,17 @@
+%YAML 1.1
+%TAG !u! tag:unity3d.com,2011:
+--- !u!114 &11400000
+MonoBehaviour:
+  m_ObjectHideFlags: 0
+  m_CorrespondingSourceObject: {fileID: 0}
+  m_PrefabInternal: {fileID: 0}
+  m_GameObject: {fileID: 0}
+  m_Enabled: 1
+  m_EditorHideFlags: 0
+  m_Script: {fileID: 11500000, guid: 94b057dea0d55462a9b27590379ecbb3, type: 3}
+  m_Name: Barrack
+  m_EditorClassIdentifier: 
+  preview_ok: {fileID: 1616343371501618, guid: 6bfbdd6c7dd7a4c35b07e89c1546730b, type: 2}
+  preview_nok: {fileID: 1193333744622324, guid: ddb8da3b04ff94d7fbcc77da364bb3e3,
+    type: 2}
+  building: {fileID: 1627256246946290, guid: 5fa52ef9661b7442d9c18ea1a703c68d, type: 2}

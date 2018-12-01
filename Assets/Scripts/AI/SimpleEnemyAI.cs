@@ -8,6 +8,7 @@ public class SimpleEnemyAI : Unit
 
     private NavMeshAgent agent;
 
+    public GameObject spear;
     public GameObject townHall;
     private GameObject currentTarget;
     private EntityTargetFinder finder;
@@ -17,10 +18,26 @@ public class SimpleEnemyAI : Unit
     public override void Start()
     {
         base.Start();
+        townHall = GlobalVariables.townHall;
         animator = GetComponent(typeof(Animator)) as Animator;
         agent = GetComponent(typeof(NavMeshAgent)) as NavMeshAgent;
         finder = GetComponentInChildren(typeof(EntityTargetFinder)) as EntityTargetFinder;
+        animator.SetInteger("Weapon", 2);
+
     }
+
+    public override void Ready()
+    {
+        base.Ready();
+        Transform rightHand = transform.Find("Root/Global/Position/Hips/LowerBack/Spine/Spine1/RightShoulder/RightArm/RightForeArm/RightHand");
+
+        Vector3 old = spear.transform.localPosition;
+        Quaternion oldQ = spear.transform.localRotation;
+        spear.transform.parent = rightHand;
+        spear.transform.localPosition = old;
+        spear.transform.localRotation = oldQ;
+    }
+
 
 
     public void lookAround()
@@ -74,7 +91,7 @@ public class SimpleEnemyAI : Unit
         agent.destination = getNearestPointTo(currentTarget);
 
         //Debug.Log("Distance : " + getRealDistBetweenGameObject(currentTarget) + " from : " + currentTarget.name + " -> " + getNearestPointTo(currentTarget) + " vs " + this.transform.position);
-        if(getRealDistBetweenGameObject(currentTarget) < .5f && canAttack){
+        if(getRealDistBetweenGameObject(currentTarget) < 1.5f && canAttack){
             animator.SetTrigger("Attack1Trigger");
             agent.isStopped = true;
             canAttack = false;

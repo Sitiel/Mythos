@@ -15,6 +15,7 @@ public class SimpleFollowerAI : Unit {
 
     private NavMeshAgent agent;
     private EntityTargetFinder finder;
+    public GameObject sword;
 
 	// Use this for initialization
     public override void Start () {
@@ -24,8 +25,26 @@ public class SimpleFollowerAI : Unit {
         agent = GetComponent(typeof(NavMeshAgent)) as NavMeshAgent;
         finder = GetComponentInChildren(typeof(EntityTargetFinder)) as EntityTargetFinder;
         player = FindObjectOfType<RPGCharacterController>().gameObject;
+        animator.SetInteger("Weapon", 7);
+        animator.SetInteger("RightWeapon", 9);
+        animator.SetInteger("AttackSide", 2);
         
     }
+
+    public override void Ready()
+    {
+        base.Ready();
+        Transform rightHand = transform.Find("Root/Global/Position/Hips/LowerBack/Spine/Spine1/RightShoulder/RightArm/RightForeArm/RightHand");
+
+        Vector3 old = sword.transform.localPosition;
+        Quaternion oldQ = sword.transform.localRotation;
+        Vector3 oldS = sword.transform.localScale;
+        sword.transform.parent = rightHand;
+        sword.transform.localPosition = old;
+        sword.transform.localRotation = oldQ;
+        sword.transform.localScale = oldS;
+    }
+
 
 
     public void follow(){
@@ -56,7 +75,7 @@ public class SimpleFollowerAI : Unit {
                 }
 
                 if(getRealDistBetweenGameObject(nearbyEnnemies[0].gameObject) < .5f && canAttack){
-                    animator.SetTrigger("Attack1Trigger");
+                    animator.SetTrigger("Attack8Trigger");
                     agent.isStopped = true;
                     canAttack = false;
                     StartCoroutine(_WaitEndOfAttack(0.75f));
