@@ -238,6 +238,12 @@ public class RPGCharacterController : Unit{
 
     #region UpdateAndInput
 
+    public override void updateLife(Damage d)
+    {
+        base.updateLife(d);
+        lifeSlider.value = (float)(life) / maxLife;
+    }
+
     void Inputs(){
 		//Input abstraction for easier asset updates using outside control schemes
 		inputJump = Input.GetButtonDown("Jump");

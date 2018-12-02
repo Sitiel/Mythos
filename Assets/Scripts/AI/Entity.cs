@@ -32,7 +32,7 @@ public class Entity : MonoBehaviour {
 
 	public virtual void Update()
 	{
-        if(lastDamage+10f < Time.time && lastHeal + 1f < Time.time){
+        if(lastDamage+10f < Time.time && lastHeal + 1f < Time.time && life != maxLife){
             updateLife(new Damage(5, this));
         }
 	}
@@ -46,6 +46,9 @@ public class Entity : MonoBehaviour {
         if(!invulnerability.ContainsKey(d.caller) || invulnerability[d.caller] + 1f < Time.time){
             if (d.nbDamage < 0)
                 lastDamage = Time.time;
+            else{
+                lastHeal = Time.time;
+            }
             
             this.life = Mathf.Clamp(this.life + d.nbDamage, 0, maxLife);
             isDead = this.life == 0;
