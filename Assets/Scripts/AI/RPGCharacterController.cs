@@ -227,6 +227,14 @@ public class RPGCharacterController : Unit{
         twoHandSword.transform.localPosition = old;
         twoHandSword.transform.localRotation = oldQ;
 
+        old = twoHandSpear.transform.localPosition;
+        oldQ = twoHandSpear.transform.localRotation;
+        twoHandSpear.transform.parent = rightHand;
+        twoHandSpear.transform.localPosition = old;
+        twoHandSpear.transform.localRotation = oldQ;
+
+
+
 		HideAllWeapons();
         inventory.RemoveWeapon(1);
 

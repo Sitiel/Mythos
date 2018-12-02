@@ -7,12 +7,16 @@ public class Entity : MonoBehaviour {
 
     protected Animator animator;
     protected Rigidbody body;
+    protected AudioSource source;
 
     public Dictionary<Entity, float> invulnerability = new Dictionary<Entity, float>();
+    public List<AudioClip> hitSounds;
+
 
 	// Use this for initialization
 	public virtual void Start () {
         body = GetComponent<Rigidbody>();
+        source = GetComponent<AudioSource>();
 	}
 
     public virtual void Ready(){
@@ -45,7 +49,14 @@ public class Entity : MonoBehaviour {
             return;
         if(!invulnerability.ContainsKey(d.caller) || invulnerability[d.caller] + 1f < Time.time){
             if (d.nbDamage < 0)
+            {
                 lastDamage = Time.time;
+                if (hitSounds.Count > 0){
+                    source.PlayOneShot(hitSounds[Random.Range(0, hitSounds.Count)]);
+                }
+
+
+            }
             else{
                 lastHeal = Time.time;
             }

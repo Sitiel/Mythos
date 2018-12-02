@@ -63,13 +63,16 @@ public class UIManager : MonoBehaviour {
             RaycastHit hit;
             if (Physics.Raycast(ray, out hit,10000, camOcclusion))
             {
+                Vector3 size = instanciatedBuilding.GetComponentInChildren<Renderer>().bounds.size;
                 
-                if(hit.point.y > 0.3 && possibleToConstruct){
-                    Destroy(instanciatedBuilding);
-                    instanciatedBuilding = Instantiate(currentBuild.preview_nok);
-                    possibleToConstruct = false;
+                if((hit.point.y > 0.3 || Vector3.Distance(playerCameraController.transform.position, hit.point) < size.z || Vector3.Distance(playerCameraController.transform.position, hit.point) >= 2 * size.z)){
+                    if(possibleToConstruct){
+                        Destroy(instanciatedBuilding);
+                        instanciatedBuilding = Instantiate(currentBuild.preview_nok);
+                        possibleToConstruct = false;
+                    }
                 }
-                else if(hit.point.y < 1 && !possibleToConstruct){
+                else if(hit.point.y <= 0.3 && !possibleToConstruct){
                     Destroy(instanciatedBuilding);
                     instanciatedBuilding = Instantiate(currentBuild.preview_ok);
                     possibleToConstruct = true;
@@ -80,7 +83,7 @@ public class UIManager : MonoBehaviour {
             }
 
 
-            if (Input.GetMouseButtonDown(0))
+            if (Input.GetMouseButtonDown(0) && possibleToConstruct)
             {
                 Vector3 lastPos = instanciatedBuilding.transform.position;
                 Quaternion lastRot = instanciatedBuilding.transform.rotation;

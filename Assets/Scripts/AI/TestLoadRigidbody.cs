@@ -8,7 +8,7 @@ public class TestLoadRigidbody : MonoBehaviour
 	private void Update()
 	{
        
-        if (GetComponent<Rigidbody>() != null){
+        if (GetComponentInChildren<SkinnedMeshRenderer>() != null){
             unit.enabled = true;
             unit.Ready();
             this.enabled = false;

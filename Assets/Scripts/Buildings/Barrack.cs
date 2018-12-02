@@ -9,6 +9,7 @@ public class Barrack : Building
 
     public GameObject unitToCreate;
     public Transform spawnPoint;
+    public LayerMask obstructSpawn;
 
     public override void Start()
     {
@@ -22,9 +23,9 @@ public class Barrack : Building
         if(isBuild){
             currentTimer -= Time.deltaTime;
             if(currentTimer <= 0){
-                Debug.Log("Spawn");
                 currentTimer = unitCreationTimer;
-                Instantiate(unitToCreate, spawnPoint.position, Quaternion.identity);
+                Vector3 pos = spawnPoint.position + new Vector3(Random.Range(-1f,1f), 0, Random.Range(-1f, 1f));
+                Instantiate(unitToCreate, pos, Quaternion.identity);
             }
         }
 	}

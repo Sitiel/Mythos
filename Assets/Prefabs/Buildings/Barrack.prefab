@@ -748,7 +748,7 @@ GameObject:
   - component: {fileID: 4062189857248542}
   - component: {fileID: 114811150152818268}
   - component: {fileID: 64350089056207870}
-  m_Layer: 0
+  m_Layer: 12
   m_Name: Transforms
   m_TagString: Untagged
   m_Icon: {fileID: 0}
@@ -1800,8 +1800,8 @@ Transform:
   m_PrefabInternal: {fileID: 100100000}
   m_GameObject: {fileID: 1467900777665838}
   m_LocalRotation: {x: 0, y: 0, z: 0, w: 1}
-  m_LocalPosition: {x: 0, y: 3.167521, z: 0}
-  m_LocalScale: {x: 100, y: 100, z: 100}
+  m_LocalPosition: {x: 0, y: 4.07, z: -0}
+  m_LocalScale: {x: 130, y: 130, z: 130}
   m_Children:
   - {fileID: 4638425702001552}
   - {fileID: 4054072488599366}
@@ -2324,7 +2324,7 @@ Transform:
   m_PrefabInternal: {fileID: 100100000}
   m_GameObject: {fileID: 1627256246946290}
   m_LocalRotation: {x: 0.000000081460335, y: -1.1102236e-16, z: 1.1102233e-16, w: 1}
-  m_LocalPosition: {x: 413.55923, y: 0, z: 235.10068}
+  m_LocalPosition: {x: 439.83078, y: 0, z: 95.97825}
   m_LocalScale: {x: 1, y: 1, z: 1}
   m_Children:
   - {fileID: 4062189857248542}
@@ -10402,6 +10402,9 @@ MonoBehaviour:
   unitToCreate: {fileID: 1129932050916370, guid: ca9baca73051b4043b91033ad394eea4,
     type: 2}
   spawnPoint: {fileID: 4857516658039144}
+  obstructSpawn:
+    serializedVersion: 2
+    m_Bits: 1024
 --- !u!114 &114823272611196534
 MonoBehaviour:
   m_ObjectHideFlags: 1
