@@ -48,6 +48,38 @@ GameObject:
   m_NavMeshLayer: 0
   m_StaticEditorFlags: 0
   m_IsActive: 1
+--- !u!1 &1794180319312632
+GameObject:
+  m_ObjectHideFlags: 0
+  m_CorrespondingSourceObject: {fileID: 0}
+  m_PrefabInternal: {fileID: 100100000}
+  serializedVersion: 6
+  m_Component:
+  - component: {fileID: 4109054360528234}
+  - component: {fileID: 33206756723468242}
+  - component: {fileID: 23342552707515516}
+  - component: {fileID: 114527951301848702}
+  - component: {fileID: 65761795571458984}
+  m_Layer: 0
+  m_Name: Spear
+  m_TagString: Untagged
+  m_Icon: {fileID: 0}
+  m_NavMeshLayer: 0
+  m_StaticEditorFlags: 0
+  m_IsActive: 1
+--- !u!4 &4109054360528234
+Transform:
+  m_ObjectHideFlags: 1
+  m_CorrespondingSourceObject: {fileID: 0}
+  m_PrefabInternal: {fileID: 100100000}
+  m_GameObject: {fileID: 1794180319312632}
+  m_LocalRotation: {x: -0.6776136, y: 0.32783353, z: 0.5420828, w: 0.37351215}
+  m_LocalPosition: {x: 0.144, y: -0.381, z: 0.019}
+  m_LocalScale: {x: 1, y: 1, z: 1}
+  m_Children: []
+  m_Father: {fileID: 4897231414847456}
+  m_RootOrder: 1
+  m_LocalEulerAnglesHint: {x: -59.499004, y: -105.22301, z: 184.44499}
 --- !u!4 &4611450654805360
 Transform:
   m_ObjectHideFlags: 1
@@ -68,13 +100,69 @@ Transform:
   m_PrefabInternal: {fileID: 100100000}
   m_GameObject: {fileID: 1631226162644140}
   m_LocalRotation: {x: -0, y: -0, z: -0, w: 1}
-  m_LocalPosition: {x: 386.9, y: 0.056194305, z: 155}
+  m_LocalPosition: {x: 442.36853, y: 0, z: 276.47458}
   m_LocalScale: {x: 1, y: 1, z: 1}
   m_Children:
   - {fileID: 4611450654805360}
+  - {fileID: 4109054360528234}
   m_Father: {fileID: 0}
   m_RootOrder: 0
   m_LocalEulerAnglesHint: {x: 0, y: 0, z: 0}
+--- !u!23 &23342552707515516
+MeshRenderer:
+  m_ObjectHideFlags: 1
+  m_CorrespondingSourceObject: {fileID: 0}
+  m_PrefabInternal: {fileID: 100100000}
+  m_GameObject: {fileID: 1794180319312632}
+  m_Enabled: 1
+  m_CastShadows: 1
+  m_ReceiveShadows: 1
+  m_DynamicOccludee: 1
+  m_MotionVectors: 1
+  m_LightProbeUsage: 1
+  m_ReflectionProbeUsage: 1
+  m_RenderingLayerMask: 4294967295
+  m_Materials:
+  - {fileID: 2100000, guid: a955b5fb2b6264a6680541ee65cd5eda, type: 2}
+  - {fileID: 2100000, guid: 2cf88de2696cd41ecaaaf0f9d7beaabf, type: 2}
+  m_StaticBatchInfo:
+    firstSubMesh: 0
+    subMeshCount: 0
+  m_StaticBatchRoot: {fileID: 0}
+  m_ProbeAnchor: {fileID: 0}
+  m_LightProbeVolumeOverride: {fileID: 0}
+  m_ScaleInLightmap: 1
+  m_PreserveUVs: 0
+  m_IgnoreNormalsForChartDetection: 0
+  m_ImportantGI: 0
+  m_StitchLightmapSeams: 0
+  m_SelectedEditorRenderState: 3
+  m_MinimumChartSize: 4
+  m_AutoUVMaxDistance: 0.5
+  m_AutoUVMaxAngle: 89
+  m_LightmapParameters: {fileID: 0}
+  m_SortingLayerID: 0
+  m_SortingLayer: 0
+  m_SortingOrder: 0
+--- !u!33 &33206756723468242
+MeshFilter:
+  m_ObjectHideFlags: 1
+  m_CorrespondingSourceObject: {fileID: 0}
+  m_PrefabInternal: {fileID: 100100000}
+  m_GameObject: {fileID: 1794180319312632}
+  m_Mesh: {fileID: 4300000, guid: f14badcfbbec44d64afecac846043ba9, type: 3}
+--- !u!65 &65761795571458984
+BoxCollider:
+  m_ObjectHideFlags: 1
+  m_CorrespondingSourceObject: {fileID: 0}
+  m_PrefabInternal: {fileID: 100100000}
+  m_GameObject: {fileID: 1794180319312632}
+  m_Material: {fileID: 0}
+  m_IsTrigger: 1
+  m_Enabled: 1
+  serializedVersion: 2
+  m_Size: {x: 0.087615386, y: 0.22340308, z: 1.8695976}
+  m_Center: {x: 0.00000019432048, y: -0.00000011079685, z: 0.9200563}
 --- !u!95 &95098655445019330
 Animator:
   serializedVersion: 3
@@ -151,11 +239,23 @@ MonoBehaviour:
   preloadWardrobeRecipes:
     loadDefaultRecipes: 1
     recipes:
-    - _recipeName: MaleRobe
+    - _recipeName: MaleGloves
       _compatibleRaces:
       - HumanMale
       - HumanMaleDCS
-    - _recipeName: MaleGloves
+    - _recipeName: MaleBeard1
+      _compatibleRaces:
+      - HumanMaleDCS
+      - HumanMale
+    - _recipeName: MaleBrow02
+      _compatibleRaces:
+      - HumanMale
+      - HumanMaleDCS
+    - _recipeName: MalePants
+      _compatibleRaces:
+      - HumanMale
+      - HumanMaleDCS
+    - _recipeName: MaleRobe Shoes
       _compatibleRaces:
       - HumanMale
       - HumanMaleDCS
@@ -278,7 +378,24 @@ MonoBehaviour:
   life: 50
   maxLife: 50
   isDead: 0
+  spear: {fileID: 1794180319312632}
   townHall: {fileID: 0}
+--- !u!114 &114527951301848702
+MonoBehaviour:
+  m_ObjectHideFlags: 1
+  m_CorrespondingSourceObject: {fileID: 0}
+  m_PrefabInternal: {fileID: 100100000}
+  m_GameObject: {fileID: 1794180319312632}
+  m_Enabled: 1
+  m_EditorHideFlags: 0
+  m_Script: {fileID: 11500000, guid: 35057f6c99b51478692ed2a0cbe0a76d, type: 3}
+  m_Name: 
+  m_EditorClassIdentifier: 
+  possiblesTargets:
+    serializedVersion: 2
+    m_Bits: 5632
+  damage: 10
+  entity: {fileID: 114361307880438688}
 --- !u!114 &114598592823047624
 MonoBehaviour:
   m_ObjectHideFlags: 1

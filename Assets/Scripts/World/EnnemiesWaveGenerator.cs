@@ -27,8 +27,7 @@ public class EnnemiesWaveGenerator : MonoBehaviour {
                             x = transform.position.x;
                             y++;
                         }
-                        SimpleEnemyAI f = Instantiate(w.units[u], new Vector3(x, -1, y), Quaternion.identity);
-                        f.townHall = GlobalVariables.townHall;
+                        Unit f = Instantiate(w.units[u], new Vector3(x, -1, y), Quaternion.identity);
                     }
                 }
             }

@@ -1,6 +1,7 @@
 ﻿using System.Collections;
 using System.Collections.Generic;
 using UnityEngine;
+using UnityEngine.UI;
 
 public class Building : Entity {
 
@@ -8,16 +9,18 @@ public class Building : Entity {
     public int stoneCost = 0;
     public int foodCost = 0;
     public bool isBuild = false;
+    private Slider lifeSlider;
 
 
     private GameResources resources;
+
     
     public override void Start () {
-        
 	}
 
     public virtual void build(){
         resources = FindObjectOfType<GameResources>();
+        lifeSlider = this.transform.parent.GetComponentInChildren<Slider>();
 
         if(resources.wood < woodCost || resources.food < foodCost || resources.stone < stoneCost){
             Destroy(this.gameObject);
@@ -44,6 +47,10 @@ public class Building : Entity {
     public override void updateLife(Damage d)
     {
         base.updateLife(d);
+
+        if(lifeSlider != null)
+            lifeSlider.value = (float)(life)/maxLife;
+
         if(isDead){
             GetComponent<Collider>().enabled = false;
             FracturedObject f = transform.parent.GetComponentInChildren<FracturedObject>();
