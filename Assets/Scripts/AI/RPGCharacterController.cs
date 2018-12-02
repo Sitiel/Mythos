@@ -3,6 +3,7 @@ using System.Collections;
 using System.Runtime.InteropServices;
 using UnityEngine.UI;
 
+
 public enum Weapon{
 	UNARMED = 0,
 	TWOHANDSWORD = 1,
@@ -196,9 +197,11 @@ public class RPGCharacterController : Unit{
     bool inputRight;
     bool inputAiming;
 
-	#endregion
+    private Inventory inventory = new Inventory();
 
-	#region Initialization
+    #endregion
+
+    #region Initialization
 
     public override void Ready(){
 		//set the components
@@ -225,6 +228,8 @@ public class RPGCharacterController : Unit{
         twoHandSword.transform.localRotation = oldQ;
 
 		HideAllWeapons();
+        inventory.RemoveWeapon(1);
+
 	}
 
     #endregion
@@ -232,12 +237,6 @@ public class RPGCharacterController : Unit{
 
 
     #region UpdateAndInput
-
-    public override void updateLife(Damage d)
-    {
-        base.updateLife(d);
-        lifeSlider.value = (float)(life)/maxLife;
-    }
 
     void Inputs(){
 		//Input abstraction for easier asset updates using outside control schemes
@@ -303,19 +302,19 @@ public class RPGCharacterController : Unit{
 			if(inputUnarmed && canAction && isGrounded && !isBlocking && weapon != Weapon.UNARMED){
 				StartCoroutine(_SwitchWeapon(0));
 			}
-			if(inputShield && canAction && isGrounded && !isBlocking && leftWeapon != 7){
+			if(inputShield && canAction  && !isBlocking && leftWeapon != 7){
 				StartCoroutine(_SwitchWeapon(7));
 			}
-			if(inputAttackL && canAction && isGrounded && !isBlocking){
+			if(inputAttackL && canAction  && !isBlocking){
 				Attack(1);
 			}
-			if(inputAttackL && canAction && isGrounded && isBlocking){
+			if(inputAttackL && canAction  && isBlocking){
 				StartCoroutine(_BlockHitReact());
 			}
-			if(inputAttackR && canAction && isGrounded && !isBlocking){
+			if(inputAttackR && canAction  && !isBlocking){
 				Attack(2);
 			}
-			if(inputAttackR && canAction && isGrounded && isBlocking){
+			if(inputAttackR && canAction  && isBlocking){
 				StartCoroutine(_BlockHitReact());
 			}
 			if(inputCastL && canAction && isGrounded && !isBlocking && !isStrafing){
@@ -330,16 +329,16 @@ public class RPGCharacterController : Unit{
 			if(inputCastR && canAction && isGrounded && isBlocking){
 				StartCoroutine(_BlockBreak());
 			}
-			if(inputSwitchUpDown < -0.1f && canAction && !isBlocking && isGrounded && isSwitchingFinished){  
+			if(inputSwitchUpDown < -0.1f && canAction && !isBlocking  && isSwitchingFinished){  
 				SwitchWeaponTwoHand(0);
 			}
-			else if(inputSwitchUpDown > 0.1f && canAction && !isBlocking && isGrounded && isSwitchingFinished){
+			else if(inputSwitchUpDown > 0.1f && canAction && !isBlocking  && isSwitchingFinished){
 				SwitchWeaponTwoHand(1);
 			}
-			if(inputSwitchLeftRight < -0.1f && canAction && !isBlocking && isGrounded && isSwitchingFinished){  
+			if(inputSwitchLeftRight < -0.1f && canAction && !isBlocking  && isSwitchingFinished){  
 				SwitchWeaponLeftRight(0);
 			}
-			else if(inputSwitchLeftRight > 0.1f && canAction && !isBlocking && isGrounded && isSwitchingFinished){  
+			else if(inputSwitchLeftRight > 0.1f && canAction && !isBlocking  && isSwitchingFinished){  
 				SwitchWeaponLeftRight(1);
 			}
 			if(inputSwitchLeftRight == 0 && inputSwitchUpDown == 0){
@@ -834,12 +833,14 @@ public class RPGCharacterController : Unit{
 	//checks if character is within a certain distance from the ground, and markes it IsGrounded
 	void CheckForGrounded(){
 		float distanceToGround;
-		float threshold = .45f;
+		float threshold = 0.8f;
 		RaycastHit hit;
 		Vector3 offset = new Vector3(0, 0.4f, 0);
 		if(Physics.Raycast((transform.position + offset), -Vector3.up, out hit, 100f)){
-			distanceToGround = hit.distance;
-			if(distanceToGround < threshold){
+            
+            distanceToGround = hit.distance;
+            if (distanceToGround < threshold){
+                
 				isGrounded = true;
 				canJump = true;
 				startFall = false;
@@ -860,15 +861,18 @@ public class RPGCharacterController : Unit{
 			}
 			else{
 				fallTimer += 0.009f;
-				if(fallTimer >= fallDelay){
-					isGrounded = false;
-				}
-			}
+                /*if (fallTimer >= fallDelay)
+                {
+                    isGrounded = false;
+                }*/
+                isGrounded = false;
+            }
 		}
 	}
 
 	void Jumping(){
-		if(isGrounded){
+        CheckForGrounded();
+        if (isGrounded){
 			if(canJump && doJump){
 				StartCoroutine(_Jump());
 			}
@@ -885,11 +889,12 @@ public class RPGCharacterController : Unit{
 					startFall = true;
 				}
 			}
-			if(canDoubleJump && doublejumping && Input.GetButtonDown("Jump") && !doublejumped && isFalling){
-				// Apply the current movement to launch velocity
-				rb.velocity += doublejumpSpeed * Vector3.up;
+			if(canDoubleJump && doublejumping && Input.GetButtonDown("Jump") && !doublejumped){
+                doublejumped = true;
+                // Apply the current movement to launch velocity
+                rb.velocity = new Vector3(rb.velocity.x,doublejumpSpeed,rb.velocity.z);
 				animator.SetInteger("Jumping", 3);
-				doublejumped = true;
+				
 			}
 		}
 	}
@@ -987,7 +992,7 @@ public class RPGCharacterController : Unit{
 	//weaponNumber 19 == Right Spear
 	//weaponNumber 20 == 2H Club
 	public void Attack(int attackSide){
-		if(canAction && isGrounded){
+		if(canAction /*&& isGrounded*/){
 			//No controller input
 			if(inputVec.magnitude == 0f){
 				//Armed or Unarmed
@@ -1027,16 +1032,16 @@ public class RPGCharacterController : Unit{
 					if(attackSide != 3){
 						animator.SetTrigger("Attack" + (attackNumber + 1).ToString() + "Trigger");
 						if(leftWeapon == 12 || leftWeapon == 14 || rightWeapon == 13 || rightWeapon == 15 || rightWeapon == 19){
-							StartCoroutine(_Lock(true, true, true, 0, 0.75f));
+							StartCoroutine(_Lock(false, true, true, 0, 0.75f));
 						}
 						else{
-							StartCoroutine(_Lock(true, true, true, 0, 0.7f));
+							StartCoroutine(_Lock(false, true, true, 0, 0.7f));
 						}
 					}
 					//Dual Attacks
 					else{
 						animator.SetTrigger("AttackDual" + (attackNumber + 1).ToString() + "Trigger");
-						StartCoroutine(_Lock(true, true, true, 0, 0.75f));
+						StartCoroutine(_Lock(false, true, true, 0, 0.75f));
 					}
 				}
 				else if(weapon == Weapon.SHIELD){
@@ -1044,49 +1049,49 @@ public class RPGCharacterController : Unit{
 					int attackNumber = Random.Range(1, maxAttacks);
 					if(isGrounded){
 						animator.SetTrigger("Attack" + (attackNumber).ToString() + "Trigger");
-						StartCoroutine(_Lock(true, true, true, 0, 1.1f));
+						StartCoroutine(_Lock(false, true, true, 0, 1.1f));
 					}
 				}
 				else if(weapon == Weapon.TWOHANDSPEAR){
 					int maxAttacks = 10;
 					int attackNumber = Random.Range(1, maxAttacks);
-					if(isGrounded){
+					if(true){
 						animator.SetTrigger("Attack" + (attackNumber).ToString() + "Trigger");
-						StartCoroutine(_Lock(true, true, true, 0, 1.1f));
+						StartCoroutine(_Lock(false, true, true, 0, 1.1f));
 					}
 				}
 				else if(weapon == Weapon.TWOHANDCLUB){
 					int maxAttacks = 10;
 					int attackNumber = Random.Range(1, maxAttacks);
-					if(isGrounded){
+					if(true){
 						animator.SetTrigger("Attack" + (attackNumber).ToString() + "Trigger");
-						StartCoroutine(_Lock(true, true, true, 0, 1.1f));
+						StartCoroutine(_Lock(false, true, true, 0, 1.1f));
 					}
 				}
 				else if(weapon == Weapon.TWOHANDSWORD){
 					int maxAttacks = 11;
 					int attackNumber = Random.Range(1, maxAttacks);
-					if(isGrounded){
+					if(true){
 						animator.SetTrigger("Attack" + (attackNumber).ToString() + "Trigger");
-						StartCoroutine(_Lock(true, true, true, 0, 1.1f));
+						StartCoroutine(_Lock(false, true, true, 0, 1.1f));
 					}
 				}
 				else{
 					int maxAttacks = 6;
 					int attackNumber = Random.Range(1, maxAttacks);
-					if(isGrounded){
+					if(/*isGrounded*/true){
 						animator.SetTrigger("Attack" + (attackNumber).ToString() + "Trigger");
 						if(weapon == Weapon.TWOHANDSWORD){
-							StartCoroutine(_Lock(true, true, true, 0, 0.85f));
+							StartCoroutine(_Lock(false, true, true, 0, 0.85f));
 						}
 						else if(weapon == Weapon.TWOHANDAXE){
-							StartCoroutine(_Lock(true, true, true, 0, 1.5f));
+							StartCoroutine(_Lock(false, true, true, 0, 1.5f));
 						}
 						else if(weapon == Weapon.STAFF){
-							StartCoroutine(_Lock(true, true, true, 0, 1f));
+							StartCoroutine(_Lock(false, true, true, 0, 1f));
 						}
 						else{
-							StartCoroutine(_Lock(true, true, true, 0, 0.75f));
+							StartCoroutine(_Lock(false, true, true, 0, 0.75f));
 						}
 					}
 				}
@@ -1392,6 +1397,7 @@ public class RPGCharacterController : Unit{
 	}
 
 	//for controller weapon switching
+   /*
 	void SwitchWeaponTwoHand(int upDown){
 		if(instantWeaponSwitch){
 			HideAllWeapons();
@@ -1416,9 +1422,24 @@ public class RPGCharacterController : Unit{
 				StartCoroutine(_SwitchWeapon(weaponSwitch));
 			}
 		}
-	}
+	}*/
+
+    void SwitchWeaponTwoHand(int upDown)
+    {
+        inventory.SelectWeapon(upDown==1);
+        if (inventory.GetCurrentWeapon() == 4)
+        {
+            StartCoroutine(_SwitchWeapon(7));
+            StartCoroutine(_SwitchWeapon(19));
+        }
+        else
+        {
+            StartCoroutine(_SwitchWeapon(inventory.GetCurrentWeapon()));
+        }
+    }
 
 	//for controller weapon switching
+    
 	void SwitchWeaponLeftRight(int leftRight){
 		if(instantWeaponSwitch){
 			HideAllWeapons();
