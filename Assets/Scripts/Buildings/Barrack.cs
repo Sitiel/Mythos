@@ -16,8 +16,9 @@ public class Barrack : Building
     }
 
 	// Update is called once per frame
-	void Update()
-	{
+    public override void Update()
+    {
+        base.Update();
         if(isBuild){
             currentTimer -= Time.deltaTime;
             if(currentTimer <= 0){

@@ -41,7 +41,7 @@ public class HydraAI : Unit
         {
             Vector3 directionToTarget = potentialTarget.transform.position - currentPosition;
             float dSqrToTarget = getRealDistBetweenGameObject(potentialTarget.gameObject);
-            if (dSqrToTarget < closestDistanceSqr && dSqrToTarget > 13.5f)
+            if (dSqrToTarget < closestDistanceSqr && dSqrToTarget > 7.5f)
             {
                 closestDistanceSqr = dSqrToTarget;
                 bestTarget = potentialTarget.gameObject;
@@ -64,8 +64,10 @@ public class HydraAI : Unit
 
 
     // Update is called once per frame
-    void Update()
+    public override void Update()
     {
+        base.Update();
+
         if(isDead){
             agent.isStopped = true;
             return;
@@ -76,7 +78,7 @@ public class HydraAI : Unit
         
         agent.destination = getNearestPointTo(currentTarget);
 
-        if(getRealDistBetweenGameObject(currentTarget) < 14.5f && getRealDistBetweenGameObject(currentTarget) > 13.5f && canAttack){
+        if(getRealDistBetweenGameObject(currentTarget) < 9f && getRealDistBetweenGameObject(currentTarget) > 7.5f && canAttack){
             this.transform.LookAt(currentTarget.transform.position, Vector3.up);
             animator.SetTrigger("Bite");
             agent.isStopped = true;

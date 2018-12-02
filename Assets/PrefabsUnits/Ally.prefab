@@ -87,7 +87,7 @@ Transform:
   m_PrefabInternal: {fileID: 100100000}
   m_GameObject: {fileID: 1129932050916370}
   m_LocalRotation: {x: -0, y: -0, z: -0, w: 1}
-  m_LocalPosition: {x: 443.05753, y: 0, z: 134.67746}
+  m_LocalPosition: {x: 397.7976, y: 0, z: 116.35918}
   m_LocalScale: {x: 1, y: 1, z: 1}
   m_Children:
   - {fileID: 4217532445948630}
@@ -295,18 +295,6 @@ MonoBehaviour:
   preloadWardrobeRecipes:
     loadDefaultRecipes: 1
     recipes:
-    - _recipeName: SPW_Skirt_Recipe
-      _compatibleRaces:
-      - HumanMale
-      - HumanMaleDCS
-      - HumanMaleHighPoly
-      - HumanMale_OBM
-    - _recipeName: SPW_TorsoArmour_Recipe
-      _compatibleRaces:
-      - HumanMale
-      - HumanMaleDCS
-      - HumanMaleHighPoly
-      - HumanMale_OBM
     - _recipeName: MaleBeard1
       _compatibleRaces:
       - HumanMaleDCS

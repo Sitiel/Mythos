@@ -58,8 +58,9 @@ public class SimpleFollowerAI : Unit {
     }
 
     // Update is called once per frame
-    void Update()
+    public override void Update()
     {
+        base.Update();
         if (isDead)
         {
             agent.isStopped = true;
@@ -74,7 +75,7 @@ public class SimpleFollowerAI : Unit {
                     agent.isStopped = false;
                 }
 
-                if(getRealDistBetweenGameObject(nearbyEnnemies[0].gameObject) < .5f && canAttack){
+                if(getRealDistBetweenGameObject(nearbyEnnemies[0].gameObject) < 1f && canAttack){
                     animator.SetTrigger("Attack8Trigger");
                     agent.isStopped = true;
                     canAttack = false;

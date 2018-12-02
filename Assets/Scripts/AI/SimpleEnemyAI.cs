@@ -79,8 +79,9 @@ public class SimpleEnemyAI : Unit
 
 
     // Update is called once per frame
-    void Update()
+    public override void Update()
     {
+        base.Update();
         if(isDead){
             agent.isStopped = true;
             return;

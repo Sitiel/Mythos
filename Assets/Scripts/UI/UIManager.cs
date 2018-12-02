@@ -11,7 +11,7 @@ public class UIManager : MonoBehaviour {
     [SerializeField]
     ThirdPersonCameraController playerCameraController;
 
-    private bool panelEnabled = true;
+    private bool panelEnabled = false;
     private bool isBuilding = false;
     private GameObject instanciatedBuilding;
     private Material defaultMaterial;
@@ -103,6 +103,7 @@ public class UIManager : MonoBehaviour {
         if(!panelEnabled && Input.GetKeyDown(KeyCode.J)){
             bookPanel.SetActive(!bookPanel.activeSelf);
             Cursor.visible = bookPanel.activeSelf;
+            Cursor.lockState = CursorLockMode.None;
             playerCameraController.movingCamera = !bookPanel.activeSelf;
         }
 

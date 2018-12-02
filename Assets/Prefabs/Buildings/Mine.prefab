@@ -341,6 +341,7 @@ GameObject:
   - component: {fileID: 4479940251061720}
   - component: {fileID: 64642891672154298}
   - component: {fileID: 114727203754844558}
+  - component: {fileID: 135802444581582686}
   m_Layer: 12
   m_Name: Transforms
   m_TagString: Untagged
@@ -635,7 +636,7 @@ Transform:
   m_PrefabInternal: {fileID: 100100000}
   m_GameObject: {fileID: 1942229899878120}
   m_LocalRotation: {x: 0, y: 0, z: 0, w: 1}
-  m_LocalPosition: {x: 424.87546, y: 0.0000019073486, z: 212.47414}
+  m_LocalPosition: {x: 457.46893, y: -0.0000076293945, z: 174.02522}
   m_LocalScale: {x: 1, y: 1, z: 1}
   m_Children:
   - {fileID: 4479940251061720}
@@ -3033,6 +3034,10 @@ MonoBehaviour:
   foodCost: 0
   isBuild: 0
   stoneCreationTimer: 5
+  stoneCreation: 1
+  rocks:
+    serializedVersion: 2
+    m_Bits: 65536
 --- !u!114 &114739573945138498
 MonoBehaviour:
   m_ObjectHideFlags: 1
@@ -3281,6 +3286,18 @@ MonoBehaviour:
   m_qInitialLocalRotation: {x: -0, y: -0, z: -0, w: 1}
   m_v3InitialLocalScale: {x: 1, y: 1, z: 1}
   m_bInitialLocalRotScaleInitialized: 1
+--- !u!135 &135802444581582686
+SphereCollider:
+  m_ObjectHideFlags: 1
+  m_CorrespondingSourceObject: {fileID: 0}
+  m_PrefabInternal: {fileID: 100100000}
+  m_GameObject: {fileID: 1743513449012892}
+  m_Material: {fileID: 0}
+  m_IsTrigger: 1
+  m_Enabled: 1
+  serializedVersion: 2
+  m_Radius: 0.04
+  m_Center: {x: 0, y: 0, z: -0.02}
 --- !u!222 &222546987247307778
 CanvasRenderer:
   m_ObjectHideFlags: 1

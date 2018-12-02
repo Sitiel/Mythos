@@ -14,8 +14,9 @@ public class Farm : Building
     }
 
     // Update is called once per frame
-    void Update()
+    public override void Update()
     {
+        base.Update();
         if (isBuild)
         {
             currentTimer -= Time.deltaTime;

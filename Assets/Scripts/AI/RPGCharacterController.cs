@@ -265,7 +265,9 @@ public class RPGCharacterController : Unit{
         inputAiming = false;//Input.GetKeyDown("Aiming");
     }
 
-	void Update(){
+    public override void Update()
+    {
+        base.Update();
 		//make sure there is animator on character
 		if(animator){
 			Inputs();

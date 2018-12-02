@@ -26,14 +26,27 @@ public class Entity : MonoBehaviour {
     [HideInInspector]
     public bool isDead = false;
 
+    private float lastDamage = 0f;
+    private float lastHeal = 0f;
 
-    #region event
 
-    public virtual void updateLife(Damage d)
+	public virtual void Update()
+	{
+        if(lastDamage+10f < Time.time && lastHeal + 1f < Time.time){
+            updateLife(new Damage(5, this));
+        }
+	}
+
+	#region event
+
+	public virtual void updateLife(Damage d)
     {
         if (isDead)
             return;
-        if(!invulnerability.ContainsKey(d.caller) || invulnerability[d.caller] + 1f < Time.time){;
+        if(!invulnerability.ContainsKey(d.caller) || invulnerability[d.caller] + 1f < Time.time){
+            if (d.nbDamage < 0)
+                lastDamage = Time.time;
+            
             this.life = Mathf.Clamp(this.life + d.nbDamage, 0, maxLife);
             isDead = this.life == 0;
             if (!invulnerability.ContainsKey(d.caller))
@@ -42,6 +55,7 @@ public class Entity : MonoBehaviour {
                 invulnerability[d.caller] = Time.time;
         }
     }
+
 
     #endregion
 
