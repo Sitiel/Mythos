@@ -23,7 +23,6 @@ public class SimpleEnemyAI : Unit
         agent = GetComponent(typeof(NavMeshAgent)) as NavMeshAgent;
         finder = GetComponentInChildren(typeof(EntityTargetFinder)) as EntityTargetFinder;
         animator.SetInteger("Weapon", 2);
-
     }
 
     public override void Ready()

@@ -14,24 +14,24 @@ public class GameResources : MonoBehaviour {
 
 	// Use this for initialization
 	void Start () {
-        foodText.text = "Food: " + food.ToString();
-        woodText.text = "Wood: " + wood.ToString();
-        stoneText.text = "Stone: " + stone.ToString();
+        foodText.text = food.ToString();
+        woodText.text = wood.ToString();
+        stoneText.text = stone.ToString();
 	}
 
 
     public void updateFood(int f){
         food += f;
-        foodText.text = "Food: " + food.ToString();
+        foodText.text = food.ToString();
     }
 
     public void updateWood(int w){
         wood += w;
-        woodText.text = "Wood: " + wood.ToString();
+        woodText.text = wood.ToString();
     }
 
     public void updateStone(int s){
         stone += s;
-        stoneText.text = "Stone: " + stone.ToString();
+        stoneText.text = stone.ToString();
     }
 }

@@ -14938,11 +14938,12 @@ MonoBehaviour:
   m_Script: {fileID: 11500000, guid: b607a4bcc93c9425db1f6961666d9bc2, type: 3}
   m_Name: 
   m_EditorClassIdentifier: 
+  hitSounds: []
   life: 100
   maxLife: 100
   isDead: 0
   woodCost: 50
-  stoneCost: 50
+  stoneCost: 200
   foodCost: 0
   isBuild: 0
 --- !u!114 &114835822067721808

@@ -3026,15 +3026,16 @@ MonoBehaviour:
   m_Script: {fileID: 11500000, guid: aaa23c764a5884510bfd59b24ae0afe9, type: 3}
   m_Name: 
   m_EditorClassIdentifier: 
+  hitSounds: []
   life: 100
   maxLife: 100
   isDead: 0
-  woodCost: 50
+  woodCost: 75
   stoneCost: 0
   foodCost: 0
   isBuild: 0
   stoneCreationTimer: 5
-  stoneCreation: 1
+  stoneCreation: 10
   rocks:
     serializedVersion: 2
     m_Bits: 65536

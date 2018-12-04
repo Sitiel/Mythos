@@ -3,7 +3,7 @@ using System.Collections;
 
 public class Mine : Building
 {
-    public float stoneCreationTimer = 5f;
+    public float stoneCreationTimer = 10f;
     public int stoneCreation = 1;
     float currentTimer;
     GameResources resources;
@@ -26,6 +26,7 @@ public class Mine : Building
             {
                 currentTimer = stoneCreationTimer;
                 resources.updateStone(stoneCreation);
+                resources.updateWood(-2);
             }
         }
     }

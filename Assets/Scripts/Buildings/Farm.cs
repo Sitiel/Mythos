@@ -3,28 +3,21 @@ using System.Collections;
 
 public class Farm : Building
 {
-    public float foodCreationTimer = 5f;
-    float currentTimer;
+
     GameResources resources;
 
     public override void Start()
     {
-        currentTimer = foodCreationTimer;
         resources = FindObjectOfType<GameResources>();
+        resources.updateFood(5);
     }
 
-    // Update is called once per frame
-    public override void Update()
-    {
-        base.Update();
-        if (isBuild)
-        {
-            currentTimer -= Time.deltaTime;
-            if (currentTimer <= 0)
-            {
-                currentTimer = foodCreationTimer;
-                resources.updateFood(1);
-            }
+	public override void updateLife(Damage d)
+	{
+        base.updateLife(d);
+        if(life == 0){
+            resources.updateFood(-5);
         }
-    }
+	}
+
 }

@@ -12,6 +12,8 @@ public class HydraAI : Unit
     private GameObject currentTarget;
     private EntityTargetFinder finder;
     private bool canAttack = true;
+    public AudioClip roar;
+    public AudioClip attack;
 
 
     public override void Start()
@@ -21,7 +23,7 @@ public class HydraAI : Unit
         agent = GetComponent(typeof(NavMeshAgent)) as NavMeshAgent;
         finder = GetComponentInChildren(typeof(EntityTargetFinder)) as EntityTargetFinder;
         townHall = GlobalVariables.townHall;
-
+        source.PlayOneShot(roar);
     }
 
 
@@ -80,6 +82,7 @@ public class HydraAI : Unit
 
         if(getRealDistBetweenGameObject(currentTarget) < 9f && getRealDistBetweenGameObject(currentTarget) > 7.5f && canAttack){
             this.transform.LookAt(currentTarget.transform.position, Vector3.up);
+            source.PlayOneShot(attack);
             animator.SetTrigger("Bite");
             agent.isStopped = true;
             agent.velocity = new Vector3(0, 0, 0);

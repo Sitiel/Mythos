@@ -8,23 +8,21 @@ public class AudioManager : MonoBehaviour {
 
     public AudioMixerSnapshot outOfCombat;
     public AudioMixerSnapshot inCombat;
+    public AudioMixerSnapshot rainDrop;
     public AudioClip[] stings;
     public AudioSource stingSource;
-    public float bpm = 128;
 
 
     private float m_TransitionIn;
     private float m_TransitionOut;
-    private float m_QuarterNote;
 
     private bool inFight = false;
 
     // Use this for initialization
     void Start()
     {
-        m_QuarterNote = 60 / bpm;
-        m_TransitionIn = m_QuarterNote;
-        m_TransitionOut = m_QuarterNote * 32;
+        m_TransitionIn = 1;
+        m_TransitionOut = 3;
 
     }
 
@@ -50,6 +48,18 @@ public class AudioManager : MonoBehaviour {
     {
         outOfCombat.TransitionTo(m_TransitionOut);
         inFight = false;
+    }
+
+    public void startRain(){
+        rainDrop.TransitionTo(5f);
+    }
+
+    public void endRain(){
+        if(inFight){
+            inCombat.TransitionTo(m_TransitionIn);
+        }else{
+            outOfCombat.TransitionTo(m_TransitionOut);
+        }
     }
 
     void PlaySting()

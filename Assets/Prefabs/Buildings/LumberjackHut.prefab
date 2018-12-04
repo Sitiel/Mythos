@@ -2979,6 +2979,7 @@ MonoBehaviour:
   m_Script: {fileID: 11500000, guid: 2d2963a34fd0e40a5b0aabd83b96c839, type: 3}
   m_Name: 
   m_EditorClassIdentifier: 
+  hitSounds: []
   life: 100
   maxLife: 100
   isDead: 0
@@ -2986,7 +2987,7 @@ MonoBehaviour:
   stoneCost: 0
   foodCost: 0
   isBuild: 0
-  woodCreationTimer: 5
+  woodCreationTimer: 10
   woodCreation: 1
   treesDistances: 50
 --- !u!114 &114326598972498016

@@ -344,12 +344,13 @@ MonoBehaviour:
   m_Script: {fileID: 11500000, guid: ba767d9eb908944b79631155f3647f1f, type: 3}
   m_Name: 
   m_EditorClassIdentifier: 
+  hitSounds: []
   life: 100
   maxLife: 100
   isDead: 0
   woodCost: -100
-  stoneCost: -100
-  foodCost: -10
+  stoneCost: 0
+  foodCost: 0
   isBuild: 0
 --- !u!114 &114588768366246998
 MonoBehaviour:

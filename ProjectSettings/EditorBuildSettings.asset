@@ -5,12 +5,9 @@ EditorBuildSettings:
   m_ObjectHideFlags: 0
   serializedVersion: 2
   m_Scenes:
-  - enabled: 0
-    path: Assets/Scenes/TestingScene.unity
-    guid: 99c9720ab356a0642a771bea13969a05
-  - enabled: 0
-    path: Assets/Scenes/TestingSceneValerian.unity
-    guid: c6e8f1e4978d0443eae4498d51d9ccac
+  - enabled: 1
+    path: Assets/Scenes/GameMenu.unity
+    guid: 1896e9cab967e644cbeeb8aa397540d4
   - enabled: 1
     path: Assets/Scenes/Campaign1.unity
     guid: 9d1aac1ab0fce4bd4abe6e073cb9736a
