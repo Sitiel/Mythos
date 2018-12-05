@@ -16,6 +16,7 @@ public class HydraAI : Unit
     public AudioClip attack;
 
 
+
     public override void Start()
     {
         base.Start();
@@ -69,7 +70,6 @@ public class HydraAI : Unit
     public override void Update()
     {
         base.Update();
-
         if(isDead){
             agent.isStopped = true;
             return;
@@ -79,7 +79,6 @@ public class HydraAI : Unit
             return;
         
         agent.destination = getNearestPointTo(currentTarget);
-
         if(getRealDistBetweenGameObject(currentTarget) < 9f && getRealDistBetweenGameObject(currentTarget) > 7.5f && canAttack){
             this.transform.LookAt(currentTarget.transform.position, Vector3.up);
             source.PlayOneShot(attack);
