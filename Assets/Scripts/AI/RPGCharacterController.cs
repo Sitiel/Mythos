@@ -205,6 +205,7 @@ public class RPGCharacterController : Unit{
 
     public override void Ready(){
         lifeSlider = GameObject.Find("playerLifeSlider").GetComponent<Slider>();
+        lifeSlider.value = 1;
 		//set the components
 		navMeshAgent = GetComponent<UnityEngine.AI.NavMeshAgent>();
 		animator = GetComponentInChildren<Animator>();
@@ -288,11 +289,6 @@ public class RPGCharacterController : Unit{
 
     public override void Update()
     {
-        if (this.transform.position.y < -20)
-        {
-            this.life = 0;
-            isDead = true;
-        }
 
         if (isDead)
             return;

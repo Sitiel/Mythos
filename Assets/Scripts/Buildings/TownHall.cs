@@ -7,7 +7,7 @@ public class TownHall : Building
     public override void build()
     {
         if (GlobalVariables.townHall != null){
-            Destroy(this);
+            Destroy(this.transform.parent.gameObject);
             return;
         }
             

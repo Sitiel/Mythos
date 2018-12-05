@@ -4,10 +4,11 @@ using System.Collections;
 public class PlayerChecker : MonoBehaviour
 {
     public GameObject thirdPersonPlayer;
+    public Camera cameraWhenPlayerDie;
 	// Use this for initialization
 	void Start()
 	{
-
+        cameraWhenPlayerDie.gameObject.SetActive(false);
 	}
 
 	// Update is called once per frame
@@ -24,6 +25,7 @@ public class PlayerChecker : MonoBehaviour
 	}
 
     public IEnumerator _revive(){
+        cameraWhenPlayerDie.gameObject.SetActive(true);
         Destroy(GlobalVariables.player.transform.parent.gameObject);
         GlobalVariables.player = null;
         yield return new WaitForSeconds(10f);
@@ -31,5 +33,6 @@ public class PlayerChecker : MonoBehaviour
             Instantiate(thirdPersonPlayer, GlobalVariables.townHall.transform.position + new Vector3(0, 10, 0), Quaternion.identity);
         else
             Instantiate(thirdPersonPlayer, new Vector3(0, 10, 0), Quaternion.identity);
+        cameraWhenPlayerDie.gameObject.SetActive(false);
     }
 }

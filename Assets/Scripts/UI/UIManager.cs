@@ -72,7 +72,7 @@ public class UIManager : MonoBehaviour {
                 Vector3 size = instanciatedBuilding.GetComponentInChildren<Renderer>().bounds.size;
                 Collider[] colliders = Physics.OverlapSphere(hit.point, size.z, collideForConstruct);
                 
-                if((hit.point.y > 0.3 || colliders.Length != 0 || Vector3.Distance(playerCameraController.transform.position, hit.point) >= 2 * size.z/*|| Vector3.Distance(playerCameraController.transform.position, hit.point) < size.z*/)){
+                if((hit.point.y > 0.3 || colliders.Length != 0 || Vector3.Distance(playerCameraController.transform.position, hit.point) >= 3 * size.z/*|| Vector3.Distance(playerCameraController.transform.position, hit.point) < size.z*/)){
                     if(possibleToConstruct){
                         Destroy(instanciatedBuilding);
                         instanciatedBuilding = Instantiate(currentBuild.preview_nok);
@@ -145,7 +145,7 @@ public class UIManager : MonoBehaviour {
     public void constructBuilding(Build build){
         currentBuild = build;
         isBuilding = true;
-        instanciatedBuilding = Instantiate(currentBuild.preview_ok);
+        instanciatedBuilding = Instantiate(currentBuild.preview_nok);
         possibleToConstruct = false;
     } 
 

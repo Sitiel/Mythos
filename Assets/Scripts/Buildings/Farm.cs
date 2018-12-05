@@ -5,6 +5,9 @@ public class Farm : Building
 {
 
     GameResources resources;
+    public float woodCostTimer = 10f;
+    public int woodCostT = 5;
+    float currentTimer;
 
     public override void Start()
     {
@@ -19,5 +22,19 @@ public class Farm : Building
             resources.updateFood(-5);
         }
 	}
+
+    public override void Update()
+    {
+        base.Update();
+        if (isBuild)
+        {
+            currentTimer -= Time.deltaTime;
+            if (currentTimer <= 0)
+            {
+                currentTimer = woodCostTimer;
+                resources.updateWood(-woodCostT);
+            }
+        }
+    }
 
 }
