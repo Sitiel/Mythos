@@ -22,6 +22,7 @@ public class TownHall : Building
         if (isDead)
         {
             Debug.Log("You loose");
+            FindObjectOfType<UIManager>().gameOver();
         }
     }
 }
