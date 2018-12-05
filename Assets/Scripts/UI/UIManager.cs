@@ -13,6 +13,10 @@ public class UIManager : MonoBehaviour {
     GameObject bookPanel;
     [SerializeField]
     ThirdPersonCameraController playerCameraController;
+    [SerializeField]
+    GameObject gameOverPanel;
+    [SerializeField]
+    GameObject youWinPanel;
 
     private bool panelEnabled = false;
     private bool isBuilding = false;
@@ -42,7 +46,15 @@ public class UIManager : MonoBehaviour {
         }
     }
 
+    public void gameOver()
+    {
+        gameOverPanel.SetActive(true);
+    }
 
+    public void youWin()
+    {
+        youWinPanel.SetActive(true);
+    }
 
 	// Update is called once per frame
 	void Update () {
