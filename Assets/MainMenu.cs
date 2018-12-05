@@ -7,7 +7,7 @@ public class MainMenu : MonoBehaviour {
 
 	public void PlayGame()
     {
-        SceneManager.LoadScene("CampaignPauseTest"); 
+        SceneManager.LoadScene("Campaign1"); 
     }
 
     public void QuitGame()

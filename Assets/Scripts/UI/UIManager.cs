@@ -6,8 +6,6 @@ using UnityEngine;
 public class UIManager : MonoBehaviour {
 
     [SerializeField]
-    GameObject inGameMenu;
-    [SerializeField]
     GameObject constructionPanel;
     [SerializeField]
     GameObject bookPanel;
@@ -30,7 +28,6 @@ public class UIManager : MonoBehaviour {
         Cursor.lockState = CursorLockMode.Locked;
         bookPanel.SetActive(false);
         constructionPanel.SetActive(false);
-        inGameMenu.SetActive(false);
 	}
 
     private void cancelBuild()
@@ -130,16 +127,6 @@ public class UIManager : MonoBehaviour {
             playerCameraController.movingCamera = !bookPanel.activeSelf;
         }
 
-        if(Input.GetKeyDown(KeyCode.Escape)){
-            inGameMenu.SetActive(!inGameMenu.activeSelf);
-            Cursor.visible = inGameMenu.activeSelf;
-            if (inGameMenu.activeSelf)
-                Cursor.lockState = CursorLockMode.None;
-            else
-                Cursor.lockState = CursorLockMode.Locked;
-            playerCameraController.movingCamera = !inGameMenu.activeSelf;
-        }
-
 	}
 
     public void constructBuilding(Build build){
@@ -149,12 +136,6 @@ public class UIManager : MonoBehaviour {
         possibleToConstruct = false;
     } 
 
-    public void resume(){
-        inGameMenu.SetActive(false);
-        Cursor.visible = false;
-        Cursor.lockState = CursorLockMode.Locked;
-        playerCameraController.movingCamera = true;
-    }
 
     public void quit(){
         Application.Quit();
