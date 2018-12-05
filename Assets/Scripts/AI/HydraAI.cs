@@ -95,6 +95,15 @@ public class HydraAI : Unit
         }
     }
 
+    public override void updateLife(Damage d)
+    {
+        base.updateLife(d);
+        if (isDead)
+        {
+            FindObjectOfType<UIManager>().youWin();
+        }
+    }
+
     public IEnumerator _WaitEndOfAttack(float time)
     {
         yield return new WaitForSeconds(time);
