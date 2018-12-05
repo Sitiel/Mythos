@@ -10391,14 +10391,15 @@ MonoBehaviour:
   m_Script: {fileID: 11500000, guid: 3393f755d4ccd403caa2b9d555bdae36, type: 3}
   m_Name: 
   m_EditorClassIdentifier: 
+  hitSounds: []
   life: 100
   maxLife: 100
   isDead: 0
   woodCost: 200
   stoneCost: 100
-  foodCost: 0
+  foodCost: 10
   isBuild: 0
-  unitCreationTimer: 5
+  unitCreationTimer: 30
   unitToCreate: {fileID: 1129932050916370, guid: ca9baca73051b4043b91033ad394eea4,
     type: 2}
   spawnPoint: {fileID: 4857516658039144}

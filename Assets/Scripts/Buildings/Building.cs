@@ -23,7 +23,7 @@ public class Building : Entity {
         lifeSlider = this.transform.parent.GetComponentInChildren<Slider>();
 
         if(resources.wood < woodCost || resources.food < foodCost || resources.stone < stoneCost){
-            Destroy(this.gameObject);
+            Destroy(this.transform.parent.gameObject);
             return;
         }
 
@@ -54,9 +54,11 @@ public class Building : Entity {
         if(isDead){
             GetComponent<Collider>().enabled = false;
             FracturedObject f = transform.parent.GetComponentInChildren<FracturedObject>();
-            f.SupportChunksAreIndestructible = false;
-            f.Explode(new Vector3(transform.position.x, 0, transform.position.z), 100f, 100f, false, false,false,false);
-            Destroy(this.gameObject, 30);
+            if(f != null){
+                f.SupportChunksAreIndestructible = false;
+                f.Explode(new Vector3(transform.position.x, 0, transform.position.z), 100f, 100f, false, false, false, false);
+            }
+            Destroy(this.transform.parent.gameObject);
         }
     }
 }

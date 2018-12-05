@@ -4,23 +4,21 @@ using UnityEngine;
 
 public class Collide : MonoBehaviour {
 
-    public AudioSource rainSource;
+    public AudioManager manager;
 
     ParticleSystem particle;
 
     private void Start()
     {
-        rainSource = GetComponent<AudioSource>();
         particle = GetComponent<ParticleSystem>();
         particle.Stop();
-        rainSource.Stop();
     }
 
     private void OnTriggerEnter(Collider col)
     {
         if (col.gameObject.tag == "Player")
         {
-            rainSource.Play();
+            manager.startRain();
             particle.Play();
         }
 
@@ -30,7 +28,7 @@ public class Collide : MonoBehaviour {
     {
         if (col.gameObject.tag == "Player")
         {
-            rainSource.Stop();
+            manager.endRain();
             particle.Stop();
         }
     }

@@ -3,11 +3,11 @@ using System.Collections;
 
 public class LumberjackHut : Building
 {
-    public float woodCreationTimer = 5f;
+    public float woodCreationTimer = 10f;
     public int woodCreation = 1;
     float currentTimer;
     GameResources resources;
-    public float treesDistances = 10;
+    public float treesDistances = 20;
     private Terrain terrain;
 
     public override void Start()
@@ -40,7 +40,7 @@ public class LumberjackHut : Building
             currentTimer -= Time.deltaTime;
             if(currentTimer <= 0){
                 currentTimer = woodCreationTimer;
-                resources.updateWood(woodCreation);
+                resources.updateWood(woodCreation/2);
             }
         }
     }

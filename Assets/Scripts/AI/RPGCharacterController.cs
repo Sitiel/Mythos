@@ -31,7 +31,7 @@ public enum RPGCharacterState{
 public class RPGCharacterController : Unit{
     #region Variables
 
-    public Slider lifeSlider;
+    private Slider lifeSlider;
 
 
 
@@ -204,6 +204,8 @@ public class RPGCharacterController : Unit{
     #region Initialization
 
     public override void Ready(){
+        lifeSlider = GameObject.Find("playerLifeSlider").GetComponent<Slider>();
+        lifeSlider.value = 1;
 		//set the components
 		navMeshAgent = GetComponent<UnityEngine.AI.NavMeshAgent>();
 		animator = GetComponentInChildren<Animator>();
@@ -233,6 +235,8 @@ public class RPGCharacterController : Unit{
         twoHandSpear.transform.localPosition = old;
         twoHandSpear.transform.localRotation = oldQ;
 
+        GlobalVariables.player = this;
+
 
 
 		HideAllWeapons();
@@ -250,9 +254,14 @@ public class RPGCharacterController : Unit{
     {
         base.updateLife(d);
         lifeSlider.value = (float)(life) / maxLife;
+        if(life == 0){
+            _Revive();
+        }
     }
 
     void Inputs(){
+        if (isDead)
+            return;
 		//Input abstraction for easier asset updates using outside control schemes
 		inputJump = Input.GetButtonDown("Jump");
         inputLightHit = false;//Input.GetKeyDown("LightHit");
@@ -280,7 +289,12 @@ public class RPGCharacterController : Unit{
 
     public override void Update()
     {
+
+        if (isDead)
+            return;
+        
         base.Update();
+
 		//make sure there is animator on character
 		if(animator){
 			Inputs();

@@ -6197,11 +6197,12 @@ MonoBehaviour:
   m_Script: {fileID: 11500000, guid: 3942d37674b5f43518a2436f2ba74c56, type: 3}
   m_Name: 
   m_EditorClassIdentifier: 
+  hitSounds: []
   life: 100
   maxLife: 100
   isDead: 0
   woodCost: 50
-  stoneCost: 10
+  stoneCost: 50
   foodCost: 0
   isBuild: 0
   foodCreationTimer: 30
