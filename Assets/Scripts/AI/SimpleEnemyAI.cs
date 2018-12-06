@@ -28,6 +28,9 @@ public class SimpleEnemyAI : Unit
     public override void Ready()
     {
         base.Ready();
+
+        // Because of UMA bones created in runtime we need a way to attack weapon to the hand so we are doing this way
+        // It is possible in UMA to attach weapons has wardrobe recipe but I did not have the time to learn it
         Transform rightHand = transform.Find("Root/Global/Position/Hips/LowerBack/Spine/Spine1/RightShoulder/RightArm/RightForeArm/RightHand");
 
         Vector3 old = spear.transform.localPosition;
@@ -90,13 +93,12 @@ public class SimpleEnemyAI : Unit
             return;
         agent.destination = getNearestPointTo(currentTarget);
 
-        //Debug.Log("Distance : " + getRealDistBetweenGameObject(currentTarget) + " from : " + currentTarget.name + " -> " + getNearestPointTo(currentTarget) + " vs " + this.transform.position);
+        //Attacking enemy if nearby
         if(getRealDistBetweenGameObject(currentTarget) < 1.5f && canAttack){
             animator.SetTrigger("Attack1Trigger");
             agent.isStopped = true;
             canAttack = false;
             StartCoroutine(_WaitEndOfAttack(0.75f));
-            //animator.ResetTrigger("attack");
 
         }
 

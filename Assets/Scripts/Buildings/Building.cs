@@ -3,6 +3,9 @@ using System.Collections.Generic;
 using UnityEngine;
 using UnityEngine.UI;
 
+
+//Parent class of all buildings
+//Defining the cost of buildings it and checking if the player can construct it
 public class Building : Entity {
 
     public int woodCost = 0;
@@ -55,6 +58,7 @@ public class Building : Entity {
             GetComponent<Collider>().enabled = false;
             FracturedObject f = transform.parent.GetComponentInChildren<FracturedObject>();
             if(f != null){
+                //Exploding the fractured object using Ultimate Game Tool fractured object
                 f.SupportChunksAreIndestructible = false;
                 f.Explode(new Vector3(transform.position.x, 0, transform.position.z), 100f, 100f, false, false, false, false);
             }

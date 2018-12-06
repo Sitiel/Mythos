@@ -11,6 +11,8 @@ public class Farm : Building
 
     public override void Start()
     {
+        //The farm is a special building because to make the game run better I'm limiting the units that you can create by limiting the food
+        //This building only give one time food to limit player army
         resources = FindObjectOfType<GameResources>();
         resources.updateFood(5);
     }

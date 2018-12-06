@@ -19,12 +19,12 @@ public class LumberjackHut : Building
 
 	public override void build()
 	{
+        //The sawmill (or LumberjackHut) will check the trees around and give more wood for the number of trees
 		base.build();
         terrain = FindObjectOfType<Terrain>();
         TreeInstance[] trees = terrain.terrainData.treeInstances;
         for (int i = 0; i < trees.Length; i++){
             Vector3 realPos = Vector3.Scale(trees[i].position, terrain.terrainData.size) + terrain.transform.position;
-            // Debug.Log("Distance : " + Vector3.Distance(this.transform.position, realPos));
             if(Vector3.Distance(this.transform.position, realPos) <= treesDistances){
                 woodCreation++;
             }
@@ -40,7 +40,7 @@ public class LumberjackHut : Building
             currentTimer -= Time.deltaTime;
             if(currentTimer <= 0){
                 currentTimer = woodCreationTimer;
-                resources.updateWood(woodCreation/2);
+                resources.updateWood(Mathf.Clamp(woodCreation/2, 1, 25));
             }
         }
     }

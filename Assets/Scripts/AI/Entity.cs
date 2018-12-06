@@ -2,6 +2,8 @@
 using System.Collections.Generic;
 using UnityEngine;
 
+
+//Base class of Buildings and Units in the game to allow life modification
 public class Entity : MonoBehaviour {
 
 
@@ -36,6 +38,7 @@ public class Entity : MonoBehaviour {
 
 	public virtual void Update()
 	{
+        //We heal the entity if she have not taken any damage for 10 seconds, she will gain 5hp foreach seconds
         if(lastDamage+10f < Time.time && lastHeal + 1f < Time.time && life != maxLife){
             updateLife(new Damage(5, this));
         }
@@ -47,11 +50,15 @@ public class Entity : MonoBehaviour {
     {
         if (isDead)
             return;
+
+        //We do not allow entity to take damage from the same entity more than one time per second
+        //invulnerability is a Dictionary/Hashmap for performance reason, we are avoiding to iterate around a list
         if(!invulnerability.ContainsKey(d.caller) || invulnerability[d.caller] + 1f < Time.time){
             if (d.nbDamage < 0)
             {
                 lastDamage = Time.time;
                 if (hitSounds.Count > 0){
+                    //Play a damage sound randomly
                     source.PlayOneShot(hitSounds[Random.Range(0, hitSounds.Count)]);
                 }
 
@@ -63,6 +70,7 @@ public class Entity : MonoBehaviour {
             
             this.life = Mathf.Clamp(this.life + d.nbDamage, 0, maxLife);
             isDead = this.life == 0;
+            //Add the last time we got hit by this entity
             if (!invulnerability.ContainsKey(d.caller))
                 invulnerability.Add(d.caller, Time.time);
             else
