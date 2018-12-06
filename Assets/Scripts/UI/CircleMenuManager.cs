@@ -22,14 +22,14 @@ public class CircleMenuManager : MonoBehaviour {
 
     public void ShowUI()
     {
-        if (!UI.activeSelf && Input.GetKey(KeyCode.A))
+        if (!UI.activeSelf && Input.GetKey(KeyCode.Q))
         {
             UI.SetActive(true);
             Cursor.visible = true;
             Cursor.lockState = CursorLockMode.None;
             playerCameraController.movingCamera = false;
         }
-        if(UI.activeSelf && !Input.GetKey(KeyCode.A))
+        if(UI.activeSelf && !Input.GetKey(KeyCode.Q))
         {
             UI.SetActive(false);
             Cursor.visible = false;
