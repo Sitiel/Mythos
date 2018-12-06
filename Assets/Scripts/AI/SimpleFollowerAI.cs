@@ -34,6 +34,9 @@ public class SimpleFollowerAI : Unit {
     public override void Ready()
     {
         base.Ready();
+
+        // Because of UMA bones created in runtime we need a way to attack weapon to the hand so we are doing this way
+        // It is possible in UMA to attach weapons has wardrobe recipe but I did not have the time to learn it
         Transform rightHand = transform.Find("Root/Global/Position/Hips/LowerBack/Spine/Spine1/RightShoulder/RightArm/RightForeArm/RightHand");
 
         Vector3 old = sword.transform.localPosition;

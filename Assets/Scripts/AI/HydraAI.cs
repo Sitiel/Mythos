@@ -3,6 +3,9 @@ using System.Collections.Generic;
 using UnityEngine;
 using UnityEngine.AI;
 
+
+//Class for the Hydra AI
+// It is a simple AI, just going to the nearest ennemy that she can hit (to avoid being stuck with ennemy around her feet
 public class HydraAI : Unit
 {
 
@@ -40,7 +43,8 @@ public class HydraAI : Unit
             return;
         }
        
-        
+
+        //Loop through ennemies around who are the closest but in range
         foreach (Entity potentialTarget in nearbyTargets)
         {
             Vector3 directionToTarget = potentialTarget.transform.position - currentPosition;
@@ -97,7 +101,8 @@ public class HydraAI : Unit
 
     public override void updateLife(Damage d)
     {
-        if(d.caller is RPGCharacterController){
+        //Only the player with the magic sword can make damage to the hydra, weapon 4 = magic sword
+        if(d.caller is RPGCharacterController && GlobalVariables.player.inventory.GetCurrentWeapon() == 4){
             base.updateLife(d);
         }
         if (isDead)
@@ -106,6 +111,7 @@ public class HydraAI : Unit
         }
     }
 
+    //Using coroutine to wait for the end of the attack
     public IEnumerator _WaitEndOfAttack(float time)
     {
         yield return new WaitForSeconds(time);

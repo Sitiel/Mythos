@@ -217,6 +217,7 @@ public class RPGCharacterController : Unit{
         //Place weapons with UMA
 
         Transform rightHand = transform.Find("Root/Global/Position/Hips/LowerBack/Spine/Spine1/RightShoulder/RightArm/RightForeArm/RightHand");
+        Transform leftHand = transform.Find("Root/Global/Position/Hips/LowerBack/Spine/Spine1/LeftShoulder/LeftArm/LeftForeArm/LeftHand");
 
         Vector3 old = twoHandAxe.transform.localPosition;
         Quaternion oldQ = twoHandAxe.transform.localRotation;
@@ -235,6 +236,20 @@ public class RPGCharacterController : Unit{
         twoHandSpear.transform.parent = rightHand;
         twoHandSpear.transform.localPosition = old;
         twoHandSpear.transform.localRotation = oldQ;
+
+        old = spear.transform.localPosition;
+        oldQ = spear.transform.localRotation;
+        spear.transform.parent = rightHand;
+        spear.transform.localPosition = old;
+        spear.transform.localRotation = oldQ;
+
+        old = shield.transform.localPosition;
+        oldQ = shield.transform.localRotation;
+        Vector3 oldS = shield.transform.localScale;
+        shield.transform.parent = leftHand;
+        shield.transform.localScale = oldS;
+        shield.transform.localPosition = old;
+        shield.transform.localRotation = oldQ;
 
         GlobalVariables.player = this;
 

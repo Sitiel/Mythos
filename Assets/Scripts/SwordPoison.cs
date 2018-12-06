@@ -8,12 +8,13 @@ public class SwordPoison : MonoBehaviour {
 
     private void Start()
     {
-        particle = GetComponent<ParticleSystem>();
+        particle = GetComponentInChildren<ParticleSystem>();
         particle.Stop();
     }
 
 	public void Update()
 	{
+        //If the boss is here the sword show the magic
         if(GlobalVariables.boss != null){
             particle.Play();
         }
