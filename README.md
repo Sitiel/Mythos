@@ -8,7 +8,7 @@ Mythos : A game about Greek Mythology
 ======================
 
 **Mythos** is a game about Greek mythology. It was developed in a month.
-It's a third person game where you have to build your own city and survive incoming enemy attacks.
+It is a third person game where you have to build your own city and survive incoming enemy attacks.
 
 ![Mythos Screenshot](https://media.githubusercontent.com/media/Sitiel/GameDevGroup2/master/Github_Images/screenshot.png)
 
