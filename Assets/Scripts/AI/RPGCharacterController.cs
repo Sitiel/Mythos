@@ -267,6 +267,9 @@ public class RPGCharacterController : Unit{
 
     public override void updateLife(Damage d)
     {
+        if(inventory.GetCurrentWeapon() == 4){
+            d.nbDamage = d.nbDamage / 2;
+        }
         base.updateLife(d);
         lifeSlider.value = (float)(life) / maxLife;
         if(life == 0){

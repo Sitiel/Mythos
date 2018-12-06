@@ -79,6 +79,8 @@ GameObject:
   - component: {fileID: 4317813074783722}
   - component: {fileID: 33054178213216666}
   - component: {fileID: 23206384821830414}
+  - component: {fileID: 65049376969740536}
+  - component: {fileID: 114043903344624542}
   m_Layer: 0
   m_Name: Ancient-Greek_Sword
   m_TagString: Untagged
@@ -148,7 +150,6 @@ GameObject:
   - component: {fileID: 4362295442225412}
   - component: {fileID: 198015147019758028}
   - component: {fileID: 199818159382190082}
-  - component: {fileID: 65601610630073918}
   m_Layer: 0
   m_Name: Poison
   m_TagString: Untagged
@@ -256,13 +257,13 @@ Transform:
   m_CorrespondingSourceObject: {fileID: 0}
   m_PrefabInternal: {fileID: 100100000}
   m_GameObject: {fileID: 1216939681752656}
-  m_LocalRotation: {x: -0.7071068, y: 0, z: -0, w: 0.7071068}
-  m_LocalPosition: {x: 315.02692, y: 0.9009, z: 158.73369}
-  m_LocalScale: {x: 0.33954456, y: 0.33954456, z: 0.33954456}
+  m_LocalRotation: {x: 0.98737603, y: -0.074163884, z: 0.088891305, w: -0.108104356}
+  m_LocalPosition: {x: -0.002, y: 0.674, z: 0.108}
+  m_LocalScale: {x: 0.5, y: 0.5, z: 0.5}
   m_Children: []
   m_Father: {fileID: 4605521621956826}
   m_RootOrder: 6
-  m_LocalEulerAnglesHint: {x: 0, y: 0, z: 0}
+  m_LocalEulerAnglesHint: {x: 191.554, y: -11.276001, z: 9.735992}
 --- !u!4 &4362295442225412
 Transform:
   m_ObjectHideFlags: 1
@@ -654,6 +655,18 @@ BoxCollider:
   serializedVersion: 2
   m_Size: {x: 0.389438, y: 1.9166415, z: 6.2858276}
   m_Center: {x: 0, y: 0.5826156, z: 0.14944103}
+--- !u!65 &65049376969740536
+BoxCollider:
+  m_ObjectHideFlags: 1
+  m_CorrespondingSourceObject: {fileID: 0}
+  m_PrefabInternal: {fileID: 100100000}
+  m_GameObject: {fileID: 1216939681752656}
+  m_Material: {fileID: 0}
+  m_IsTrigger: 1
+  m_Enabled: 1
+  serializedVersion: 2
+  m_Size: {x: 0.72024816, y: 4.1295357, z: 0.0953686}
+  m_Center: {x: 2.220446e-15, y: -0.00000011920926, z: -0.0000019073486}
 --- !u!65 &65457467368556264
 BoxCollider:
   m_ObjectHideFlags: 1
@@ -666,18 +679,6 @@ BoxCollider:
   serializedVersion: 2
   m_Size: {x: 0.17080009, y: 3.2984, z: 0.12310002}
   m_Center: {x: 0.023588, y: -0.40152597, z: 0.039735004}
---- !u!65 &65601610630073918
-BoxCollider:
-  m_ObjectHideFlags: 1
-  m_CorrespondingSourceObject: {fileID: 0}
-  m_PrefabInternal: {fileID: 100100000}
-  m_GameObject: {fileID: 1455621336418960}
-  m_Material: {fileID: 0}
-  m_IsTrigger: 1
-  m_Enabled: 1
-  serializedVersion: 2
-  m_Size: {x: 6, y: 6, z: 6}
-  m_Center: {x: 0, y: 0, z: 0}
 --- !u!65 &65740460138702302
 BoxCollider:
   m_ObjectHideFlags: 1
@@ -792,6 +793,22 @@ AudioSource:
     m_PreInfinity: 2
     m_PostInfinity: 2
     m_RotationOrder: 4
+--- !u!114 &114043903344624542
+MonoBehaviour:
+  m_ObjectHideFlags: 1
+  m_CorrespondingSourceObject: {fileID: 0}
+  m_PrefabInternal: {fileID: 100100000}
+  m_GameObject: {fileID: 1216939681752656}
+  m_Enabled: 1
+  m_EditorHideFlags: 0
+  m_Script: {fileID: 11500000, guid: 35057f6c99b51478692ed2a0cbe0a76d, type: 3}
+  m_Name: 
+  m_EditorClassIdentifier: 
+  possiblesTargets:
+    serializedVersion: 2
+    m_Bits: 34816
+  damage: 30
+  entity: {fileID: 114279171554092316}
 --- !u!114 &114126895760525848
 MonoBehaviour:
   m_ObjectHideFlags: 1
@@ -884,14 +901,14 @@ MonoBehaviour:
   bowPull: 0
   inWaterSpeed: 8
   twoHandAxe: {fileID: 1165071018914214}
-  twoHandSword: {fileID: 0}
+  twoHandSword: {fileID: 1216939681752656}
   twoHandSpear: {fileID: 1529205787518624}
   twoHandBow: {fileID: 0}
   twoHandCrossbow: {fileID: 0}
   twoHandClub: {fileID: 0}
   staff: {fileID: 0}
   swordL: {fileID: 0}
-  swordR: {fileID: 0}
+  swordR: {fileID: 1148514234705564}
   maceL: {fileID: 0}
   maceR: {fileID: 0}
   daggerL: {fileID: 0}
@@ -904,6 +921,7 @@ MonoBehaviour:
   rifle: {fileID: 0}
   spear: {fileID: 1148514234705564}
   instantWeaponSwitch: 1
+  inventory: {fileID: 0}
 --- !u!114 &114403925205742336
 MonoBehaviour:
   m_ObjectHideFlags: 1

@@ -1,5 +1,6 @@
 
 
+
 <a href="#">
     <img src="https://media.githubusercontent.com/media/Sitiel/GameDevGroup2/master/Github_Images/mythos.jpg" alt="logo" title="Aimeos" align="right" height="200" />
 </a>
@@ -9,6 +10,8 @@ Mythos : A game about Greek Mythology
 
 **Mythos** is a game made in a month about the greek mythology.
 It's a third person player game where you have to build your city and survive to ennemies attacks.
+For now there is only two types of ennemies, the human and the hydra, but we wanted to add many more (Minotaur, Centaur, Greeks god ... )
+You have with you a book explaining you some fact about theses mythological creature and how to defeat them.
 
 ![Mythos Screenshot](https://media.githubusercontent.com/media/Sitiel/GameDevGroup2/master/Github_Images/screenshot.png)
 
@@ -16,6 +19,9 @@ It's a third person player game where you have to build your city and survive to
 
 - [Installation](#installation)
 - [List of packages used](#list-of-packages-used)
+- [Platform](#platform)
+- [Target audience](#target-audience)
+- [Learning goal](#learning-goal)
 - [Controls](#controls)
 - [Requirements](#requirements)
 - [Team members](#team-members)
@@ -50,19 +56,31 @@ We are using quit a lot of different package to make possible some feature in th
 * "UMA" (For realistic human skin and clothing)
 * "Universal Sound FX" (For sounds effects)
 
+## Platform
+* Computer (Windows / Mac OS and Linux)
+* Playstation 4 and Xbox one
+
+## Target Audience
+* Student learning mythology ( middle school 12 - 16 )
+
+## Learning Goal
+* Teach mythology to people, to defeat the boss you need to read the journal and learn about how they defeated it in the legend.
+For example, to fight the Nemean Lion you need to fight it with your hand because his skin can resist to sword.
+
 ## Controls
 
 The game use a simple Third Person Controller
  To move around use : 
 ![Keyboard Key W Icon 24x24](https://d1nhio0ox7pgb.cloudfront.net/_img/v_collection_png/24x24/plain/keyboard_key_w.png)![Keyboard Key A Icon 24x24](https://d1nhio0ox7pgb.cloudfront.net/_img/v_collection_png/24x24/plain/keyboard_key_a.png)![Keyboard Key S Icon 24x24](https://d1nhio0ox7pgb.cloudfront.net/_img/v_collection_png/24x24/plain/keyboard_key_s.png)![Keyboard Key D Icon 24x24](https://d1nhio0ox7pgb.cloudfront.net/_img/v_collection_png/24x24/plain/keyboard_key_d.png)
 
-You can use ![Keyboard Key W Icon 24x24](https://d1nhio0ox7pgb.cloudfront.net/_img/v_collection_png/24x24/plain/keyboard_key_v.png) to change the distance of the camera from the player
+* use ![Keyboard Key W Icon 24x24](https://d1nhio0ox7pgb.cloudfront.net/_img/v_collection_png/24x24/plain/keyboard_key_v.png) to change the distance of the camera from the player
 * use TAB to have the building UI
 * use Escape to quit the game or going to the main menu
-* use Q to change weapon
-* use Space to jump (you can double jump)
+* use ![Keyboard Key W Icon 24x24](https://d1nhio0ox7pgb.cloudfront.net/_img/v_collection_png/24x24/plain/keyboard_key_q.png) to change weapon
+* use  Space to jump (you can double jump)
 * use Left Click or Right click to attack
-* use J to open the Book of tips
+* use ![Keyboard Key W Icon 24x24](https://d1nhio0ox7pgb.cloudfront.net/_img/v_collection_png/24x24/plain/keyboard_key_j.png) to open the Book of tips
+* use ![Keyboard Key W Icon 24x24](https://d1nhio0ox7pgb.cloudfront.net/_img/v_collection_png/24x24/plain/keyboard_key_q.png) to open the Weapon list UI
 
 ## Requirements
 

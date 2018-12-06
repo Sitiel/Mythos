@@ -28,6 +28,9 @@ public class InformationsManager : MonoBehaviour
                 }
                 continue;
             }
+            if (Camera.main == null)
+                continue;
+
             Vector3 rpos = Camera.main.WorldToScreenPoint(ennemy.transform.position + new Vector3(0,3,0));
             Vector3 pos = new Vector3(Mathf.Clamp(rpos.x, 50, Screen.width-50), Mathf.Clamp(rpos.y, 50, Screen.height-50));
 
