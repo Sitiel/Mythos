@@ -376,10 +376,10 @@ public class RPGCharacterController : Unit{
 				StartCoroutine(_BlockBreak());
 			}
 			if(inputSwitchUpDown < -0.1f && canAction && !isBlocking  && isSwitchingFinished){  
-				SwitchWeaponTwoHand(0);
+				//SwitchWeaponTwoHand(0);
 			}
 			else if(inputSwitchUpDown > 0.1f && canAction && !isBlocking  && isSwitchingFinished){
-				SwitchWeaponTwoHand(1);
+				//SwitchWeaponTwoHand(1);
 			}
 			if(inputSwitchLeftRight < -0.1f && canAction && !isBlocking  && isSwitchingFinished){  
 				SwitchWeaponLeftRight(0);
@@ -1470,18 +1470,18 @@ public class RPGCharacterController : Unit{
 		}
 	}*/
 
-    void SwitchWeaponTwoHand(int upDown)
+    /*void SwitchWeaponTwoHand(int upDown)
     {
         inventory.SelectWeapon(upDown==1);
         SwitchWeapon();
-    }
+    }*/
 
     public void SwitchWeapon()
     {
         if (inventory.GetCurrentWeapon() == 4)
         {
             StartCoroutine(_SwitchWeapon(7));
-            StartCoroutine(_SwitchWeapon(19));
+            StartCoroutine(_SwitchWeapon(9));
         }
         else
         {
