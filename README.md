@@ -1,7 +1,7 @@
 
 
 <a href="#">
-    <img src="https://media.githubusercontent.com/media/Sitiel/GameDevGroup2/master/Github_Images/mythos.jpg" alt="logo" title="Aimeos" align="right" height="120" />
+    <img src="https://media.githubusercontent.com/media/Sitiel/GameDevGroup2/master/Github_Images/mythos.jpg" alt="logo" title="Aimeos" align="right" height="200" />
 </a>
 
 Mythos : A game about Greek Mythology
@@ -10,7 +10,7 @@ Mythos : A game about Greek Mythology
 **Mythos** is a game made in a month about the greek mythology.
 It's a third person player game where you have to build your city and survive to ennemies attacks.
 
-![Mythos Screenshot](https://media.githubusercontent.com/media/Sitiel/GameDevGroup2/master/Github_Images/screenshot.png)]
+![Mythos Screenshot](https://media.githubusercontent.com/media/Sitiel/GameDevGroup2/master/Github_Images/screenshot.png)
 
 ## Table of content
 
