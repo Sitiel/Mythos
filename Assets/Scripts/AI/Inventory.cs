@@ -31,7 +31,6 @@ public class Inventory : MonoBehaviour
         weapons.Add(0);
         if (twoHandedSword)
         {
-            print("twhs");
             weapons.Add(1);
         }
         if (twoHandedSpear)
@@ -69,6 +68,15 @@ public class Inventory : MonoBehaviour
         }
     }
 
+    public void SelectWeapon(int nb)
+    {aaaaa
+        if (nb < weapons.Count && nb >=0)
+        {
+            currentWeapon = weapons[nb];
+            print(weapons.IndexOf(currentWeapon));
+        }
+    }
+
     public void SelectWeapon(bool up)
     {
         int indexLastWeapon = weapons.IndexOf(currentWeapon);
@@ -86,7 +94,6 @@ public class Inventory : MonoBehaviour
             }
             currentWeapon = weapons[indexLastWeapon-1];
         }
-        print(indexLastWeapon);
     }
 
     public int GetCurrentWeapon()

@@ -197,7 +197,7 @@ public class RPGCharacterController : Unit{
     bool inputRight;
     bool inputAiming;
 
-    private Inventory inventory = new Inventory();
+    public Inventory inventory;
 
     #endregion
 
@@ -211,12 +211,12 @@ public class RPGCharacterController : Unit{
 		animator = GetComponentInChildren<Animator>();
 		rb = GetComponent<Rigidbody>();
 		capCollider = GetComponent<CapsuleCollider>();
+        inventory = new Inventory();
         //FXSplash = transform.GetChild(2).GetComponent<ParticleSystem>();
 
         //Place weapons with UMA
 
         Transform rightHand = transform.Find("Root/Global/Position/Hips/LowerBack/Spine/Spine1/RightShoulder/RightArm/RightForeArm/RightHand");
-        Transform leftHand = transform.Find("Root/Global/Position/Hips/LowerBack/Spine/Spine1/LeftShoulder/LeftArm/LeftForeArm/LeftHand");
 
         Vector3 old = twoHandAxe.transform.localPosition;
         Quaternion oldQ = twoHandAxe.transform.localRotation;
@@ -236,26 +236,11 @@ public class RPGCharacterController : Unit{
         twoHandSpear.transform.localPosition = old;
         twoHandSpear.transform.localRotation = oldQ;
 
-        old = spear.transform.localPosition;
-        oldQ = spear.transform.localRotation;
-        spear.transform.parent = rightHand;
-        spear.transform.localPosition = old;
-        spear.transform.localRotation = oldQ;
-
-        old = shield.transform.localPosition;
-        oldQ = shield.transform.localRotation;
-        Vector3 oldS = shield.transform.localScale;
-        shield.transform.parent = leftHand;
-        shield.transform.localScale = oldS;
-        shield.transform.localPosition = old;
-        shield.transform.localRotation = oldQ;
-            
         GlobalVariables.player = this;
 
 
 
 		HideAllWeapons();
-        inventory.RemoveWeapon(1);
 
 	}
 
@@ -1470,6 +1455,11 @@ public class RPGCharacterController : Unit{
     void SwitchWeaponTwoHand(int upDown)
     {
         inventory.SelectWeapon(upDown==1);
+        SwitchWeapon();
+    }
+
+    public void SwitchWeapon()
+    {
         if (inventory.GetCurrentWeapon() == 4)
         {
             StartCoroutine(_SwitchWeapon(7));
@@ -1479,6 +1469,12 @@ public class RPGCharacterController : Unit{
         {
             StartCoroutine(_SwitchWeapon(inventory.GetCurrentWeapon()));
         }
+    }
+
+    public void SwitchWeaponNB(int weaponNB)
+    {
+        inventory.SelectWeapon(weaponNB);
+        SwitchWeapon();
     }
 
 	//for controller weapon switching
