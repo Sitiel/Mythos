@@ -9,7 +9,7 @@ Mythos : A game about Greek Mythology
 ======================
 
 **Mythos** is a game made in a month about the greek mythology.
-It's a third person player game where you have to build your city and survive to ennemies attacks.
+It is a third person player game where you have to build your city and survive to ennemies attacks.
 For now there is only two types of ennemies, the human and the hydra, but we wanted to add many more (Minotaur, Centaur, Greeks god ... )
 You have with you a book explaining you some fact about theses mythological creature and how to defeat them.
 
