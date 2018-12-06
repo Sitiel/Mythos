@@ -2070,8 +2070,8 @@ MonoBehaviour:
   m_Name: 
   m_EditorClassIdentifier: 
   hitSounds: []
-  life: 1000
-  maxLife: 1000
+  life: 100
+  maxLife: 100
   isDead: 0
   townHall: {fileID: 0}
   roar: {fileID: 8300000, guid: 4c8e44e44873d455fbd991280479319c, type: 3}

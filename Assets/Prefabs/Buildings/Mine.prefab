@@ -3034,8 +3034,8 @@ MonoBehaviour:
   stoneCost: 0
   foodCost: 0
   isBuild: 0
-  stoneCreationTimer: 5
-  stoneCreation: 10
+  stoneCreationTimer: 30
+  stoneCreation: 1
   rocks:
     serializedVersion: 2
     m_Bits: 65536

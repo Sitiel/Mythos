@@ -69,7 +69,7 @@ public class Inventory : MonoBehaviour
     }
 
     public void SelectWeapon(int nb)
-    {aaaaa
+    {
         if (nb < weapons.Count && nb >=0)
         {
             currentWeapon = weapons[nb];

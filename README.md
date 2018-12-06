@@ -7,12 +7,12 @@
 Mythos : A game about Greek Mythology
 ======================
 
-**Mythos** is a game about Greek mythology. It was developed in a month.
-It is a third person game where you have to build your own city and survive incoming enemy attacks.
+**Mythos** is a game made in a month about the greek mythology.
+It's a third person player game where you have to build your city and survive to ennemies attacks.
 
 ![Mythos Screenshot](https://media.githubusercontent.com/media/Sitiel/GameDevGroup2/master/Github_Images/screenshot.png)
 
-## Table of contents
+## Table of content
 
 - [Installation](#installation)
 - [List of packages used](#list-of-packages-used)
@@ -36,14 +36,14 @@ To setup the project :
 
 ## List of packages used
 
-We have used several different packages in order to enable some game features within a month.
+We are using quit a lot of different package to make possible some feature in the game in a month.
 *  "AQUAS" (For water reflection)
 * "craft" (Icon in the game)
 * "HEROIC FANTASY CREATURES FULL PACK" (For mythological creatures)
 * "low poly medieval buildings" (Some buildings are matching with greek one)
 * "Polylised - Medieval Desert City" (For the walls)
 * "Realistic Forest Pack" (For the environment : trees, grass, skybox and rocks)
-* "RPG Character Animation Pack" (For human animations)
+* "RPG Character Animation Pack" (For humans animations)
 * "Spartan_Warrior" (UMA greek clothes)
 * "Ultimate Game Music Collection" (For the music in the game)
 * "Ultimate Game Tools" (For building destruction)
@@ -52,17 +52,17 @@ We have used several different packages in order to enable some game features wi
 
 ## Controls
 
-The game uses a simple Third Person Controller
- To move around, use : 
+The game use a simple Third Person Controller
+ To move around use : 
 ![Keyboard Key W Icon 24x24](https://d1nhio0ox7pgb.cloudfront.net/_img/v_collection_png/24x24/plain/keyboard_key_w.png)![Keyboard Key A Icon 24x24](https://d1nhio0ox7pgb.cloudfront.net/_img/v_collection_png/24x24/plain/keyboard_key_a.png)![Keyboard Key S Icon 24x24](https://d1nhio0ox7pgb.cloudfront.net/_img/v_collection_png/24x24/plain/keyboard_key_s.png)![Keyboard Key D Icon 24x24](https://d1nhio0ox7pgb.cloudfront.net/_img/v_collection_png/24x24/plain/keyboard_key_d.png)
 
 You can use ![Keyboard Key W Icon 24x24](https://d1nhio0ox7pgb.cloudfront.net/_img/v_collection_png/24x24/plain/keyboard_key_v.png) to change the distance of the camera from the player
-use TAB to have the building UI
-use Escape to quit the game or going to the main menu
-use Q to change weapon
-use Space to jump (you can double jump)
-use Left Click or Right click to attack
-use J to open the Book of tips
+* use TAB to have the building UI
+* use Escape to quit the game or going to the main menu
+* use Q to change weapon
+* use Space to jump (you can double jump)
+* use Left Click or Right click to attack
+* use J to open the Book of tips
 
 ## Requirements
 

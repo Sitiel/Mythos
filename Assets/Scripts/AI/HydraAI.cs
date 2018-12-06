@@ -25,6 +25,7 @@ public class HydraAI : Unit
         finder = GetComponentInChildren(typeof(EntityTargetFinder)) as EntityTargetFinder;
         townHall = GlobalVariables.townHall;
         source.PlayOneShot(roar);
+        GlobalVariables.boss = this;
     }
 
 
@@ -96,7 +97,9 @@ public class HydraAI : Unit
 
     public override void updateLife(Damage d)
     {
-        base.updateLife(d);
+        if(d.caller is RPGCharacterController){
+            base.updateLife(d);
+        }
         if (isDead)
         {
             FindObjectOfType<UIManager>().youWin();

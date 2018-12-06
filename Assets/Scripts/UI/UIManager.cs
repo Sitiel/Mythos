@@ -15,6 +15,10 @@ public class UIManager : MonoBehaviour {
     GameObject gameOverPanel;
     [SerializeField]
     GameObject youWinPanel;
+    protected AudioSource source;
+
+    public AudioClip openBook;
+    public AudioClip closeBook;
 
     private bool panelEnabled = false;
     private bool isBuilding = false;
@@ -32,6 +36,7 @@ public class UIManager : MonoBehaviour {
         Cursor.lockState = CursorLockMode.Locked;
         bookPanel.SetActive(false);
         constructionPanel.SetActive(false);
+        source = GetComponent<AudioSource>();
 	}
 
     private void cancelBuild()
@@ -130,6 +135,12 @@ public class UIManager : MonoBehaviour {
 
         if(!panelEnabled && Input.GetKeyDown(KeyCode.J)){
             bookPanel.SetActive(!bookPanel.activeSelf);
+            if(bookPanel.activeSelf){
+                source.PlayOneShot(openBook);
+            }
+            else{
+                source.PlayOneShot(closeBook);
+            }
             Cursor.visible = bookPanel.activeSelf;
             if(bookPanel.activeSelf)
                 Cursor.lockState = CursorLockMode.None;

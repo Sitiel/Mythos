@@ -12,20 +12,10 @@ public class SwordPoison : MonoBehaviour {
         particle.Stop();
     }
 
-    private void OnTriggerEnter(SwordPoison col)
-    {
-        if (col.gameObject.tag == "Hydra")
-        {
+	public void Update()
+	{
+        if(GlobalVariables.boss != null){
             particle.Play();
         }
-
-    }
-
-    private void OnTriggerExit(SwordPoison col)
-    {
-        if (col.gameObject.tag == "Hydra")
-        {
-            particle.Stop();
-        }
-    }
+	}
 }
