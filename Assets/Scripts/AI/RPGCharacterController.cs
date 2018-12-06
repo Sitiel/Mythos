@@ -254,8 +254,8 @@ public class RPGCharacterController : Unit{
         GlobalVariables.player = this;
 
 
-
 		HideAllWeapons();
+        inventory.SelectWeapon(1);
 
 	}
 
