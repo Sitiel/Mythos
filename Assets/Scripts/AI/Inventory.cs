@@ -20,7 +20,6 @@ public class Inventory : MonoBehaviour
     private List<int> weapons = new List<int>(0);
     private int currentWeapon = 0;
 
-    
     private bool twoHandedSword = true;
     private bool twoHandedSpear = true;
     private bool twoHandedAxe = true;
@@ -28,7 +27,7 @@ public class Inventory : MonoBehaviour
 
     public void InitialiseInventory()
     {
-        weapons.Add(0);
+        //weapons.Add(0);
         if (twoHandedSword)
         {
             weapons.Add(1);
