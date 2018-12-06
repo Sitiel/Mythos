@@ -65,14 +65,14 @@ public class CircleMenu : MonoBehaviour {
             buttons[i].SetSceneImage(DrawButton(angleSize, angleStart,buttons[i].objectImage));
             angleStart += angleSize;
         }
-        GameObject uiBackground = Instantiate(lrGameObject, transform);
-        /*
+        /*GameObject uiBackground = Instantiate(lrGameObject, transform);
+        
         LineRenderer lr = uiBackground.GetComponent<LineRenderer>();
         lr.useWorldSpace = false;
-        lr.endWidth = 1f;
-        lr.startWidth = 1f;
-        float thetaPrecision = 20f;
-        float radius = 3f;
+        lr.endWidth = 0.5f;
+        lr.startWidth = 0.5f;
+        float thetaPrecision = 0.000005f;
+        float radius = 1f;
         float theta = 0f;
         int nbVertice = (int)((1f / thetaPrecision) + 1f);
         lr.positionCount = nbVertice;
@@ -114,20 +114,16 @@ public class CircleMenu : MonoBehaviour {
             lr.SetPosition(i, new Vector3(y, x, 0));
         }
         imgButton.transform.localPosition = new Vector3(0f, 0f, 0f);
-        imgButton.transform.localScale = new Vector3(50f, 50f, 0f);
+        imgButton.transform.localScale = new Vector3(35f, 35f, 0f);
         imgButton.transform.localEulerAngles = new Vector3(0f, 0f, angleStart);
-        Instantiate(img,imgButton.transform);
-
+        Instantiate(img,this.gameObject.transform);
+        
         img.rectTransform.sizeDelta = new Vector2(150f, 150f);
+        img.transform.localScale = new Vector3(1f, 1f, 0f);
 
-        img.transform.localPosition = new Vector3(5f, 5f, 0f);
-        
-        img.transform.localRotation = Quaternion.identity;
-        img.transform.localEulerAngles = new Vector3(0f, 0f, angleStart);
-        img.transform.localPosition = new Vector3(Mathf.Cos((angleStart + (angle / 2) / 180) * Mathf.PI) * 5f, Mathf.Sin((angleStart + (angle / 2) / 180) * Mathf.PI) * 5f, 0f);
-        img.transform.localScale = new Vector3(0.01f, 0.01f, 0f);
-        
-        Debug.Log("bbbb");
+        img.transform.localPosition = new Vector3(-Mathf.Sin(((angleStart + (angle / 2)) / 180) * Mathf.PI) * 300f, Mathf.Cos(((angleStart + (angle / 2)) / 180) * Mathf.PI) * 300f, 0f);
+        img.transform.localEulerAngles = new Vector3(0f, 0f, 0f);
+
 
         return imgButton;
     }
@@ -137,7 +133,7 @@ public class CircleMenu : MonoBehaviour {
     {
         mousePosition = new Vector2(Input.mousePosition.x, Input.mousePosition.y);
 
-        float angle = (Mathf.Atan2(Input.mousePosition.y - Screen.height / 2, Input.mousePosition.x - Screen.width / 2) - Mathf.PI / 2) /Mathf.PI*180;
+        float angle = (Mathf.Atan2(Input.mousePosition.y - Screen.height / 2, Input.mousePosition.x - Screen.width / 2) ) /Mathf.PI*180;
 
 
         if(angle < 0)
@@ -207,21 +203,24 @@ public class MenuButton
     //used to change color of the game object, 0 for normal color, 1 for higlighted, 2 for pressed
     public void ChangeColor(int colorType)
     {
-        MeshRenderer gameObjectRenderer = sceneObject.GetComponent<MeshRenderer>();
-        
+        LineRenderer gameObjectRenderer = sceneObject.GetComponent<LineRenderer>();
+        Material newMat = new Material(Shader.Find("UI/Default"));
+
+
         switch (colorType)
         {
             case 0:
-                gameObjectRenderer.material.color = normalColor;
+                newMat.color = normalColor;
                 break;
             case 1:
-                gameObjectRenderer.material.color = higlightedColor;
+                newMat.color = higlightedColor;
                 break;
             case 2:
-                gameObjectRenderer.material.color = pressedColor;
+                newMat.color = pressedColor;
                 break;
         }
-        
+        gameObjectRenderer.material = newMat;
+
     }
 
 }

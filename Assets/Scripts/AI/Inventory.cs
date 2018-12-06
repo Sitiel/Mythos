@@ -10,7 +10,7 @@ public class Inventory : MonoBehaviour
     // 1 2Handed sword
     // 2 2Handed spear
     // 3 2Handed axe
-    // 4 shield spear
+    // 4 shield sword
     // 
     // 
     // 
