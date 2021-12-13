@@ -2,7 +2,7 @@
 
 
 <a href="#">
-    <img src="https://media.githubusercontent.com/media/Sitiel/GameDevGroup2/master/Github_Images/mythos.jpg" alt="logo" title="Aimeos" align="right" height="200" />
+    <img src="https://github.com/Sitiel/Mythos/raw/master/Github_Images/mythos.jpg" alt="logo" title="Aimeos" align="right" height="200" />
 </a>
 
 Mythos : A game about Greek Mythology
@@ -13,7 +13,7 @@ It is a third person player game where you have to build your city and survive t
 For now there is only two types of ennemies, the human and the hydra, but we wanted to add many more (Minotaur, Centaur, Greeks god ... )
 You have with you a book explaining you some fact about theses mythological creature and how to defeat them.
 
-![Mythos Screenshot](https://media.githubusercontent.com/media/Sitiel/GameDevGroup2/master/Github_Images/screenshot.png)
+![Mythos Screenshot](https://github.com/Sitiel/Mythos/raw/master/Github_Images/screenshot.png)
 
 ## Table of content
 
